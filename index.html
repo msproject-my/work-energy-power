@@ -35,6 +35,22 @@
   </script>
 
   <style>
+    /* Security & Anti-Duplication Protection */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    /* Permit typing inside inputs while keeping surrounding UI locked */
+    input[type="number"], input[type="text"] {
+      -webkit-user-select: auto;
+      user-select: auto;
+    }
+
+    /* Custom clean scrollbars */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #f8fafc; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -61,7 +77,7 @@
 
 <body class="bg-gradient-to-br from-slate-100 via-slate-50 to-indigo-50/40 text-slate-800 min-h-screen font-sans flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
 
-  <!-- Top Navigation Header: STRICTLY 3 TABS -->
+  <!-- Top Navigation Header with 3 Core Tabs -->
   <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
       
@@ -74,7 +90,7 @@
           <h1 class="text-base sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-2">
             Principle of Conservation of Energy
             <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-xs uppercase tracking-wider">
-              Interactive Lab
+              Protected Lab
             </span>
           </h1>
           <p class="text-xs text-slate-500 font-medium">
@@ -83,9 +99,9 @@
         </div>
       </div>
 
-      <!-- Navigation Tabs (Only 3 Tabs: Fundamentals -> Simulator -> Calculator) -->
+      <!-- Exactly 3 Core Navigation Tabs -->
       <nav class="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-2xl border border-slate-200 text-xs font-semibold overflow-x-auto max-w-full">
-        <button id="navTabFundamentals" onclick="switchView('fundamentals')" class="tab-btn px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-xs transition flex items-center gap-1.5 font-bold">
+        <button id="navTabTheory" onclick="switchView('theory')" class="tab-btn px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs transition flex items-center gap-1.5 font-bold">
           <span>💡</span>
           <span>Fundamentals: E<sub>p</sub> &amp; E<sub>k</sub></span>
         </button>
@@ -105,444 +121,440 @@
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
 
     <!-- ================================================================= -->
-    <!-- TAB 1: FUNDAMENTALS - POTENTIAL ENERGY & KINETIC ENERGY           -->
+    <!-- TAB 1: FUNDAMENTALS: Ep & Ek (WITH EXCEL 3-PARAMETER SOLVERS)     -->
     <!-- ================================================================= -->
-    <div id="viewFundamentals" class="tab-pane active space-y-6">
+    <div id="viewTheory" class="tab-pane active space-y-6">
       
-      <!-- Page Hero Banner -->
-      <div class="studio-card rounded-2xl p-6 sm:p-7 bg-gradient-to-r from-blue-50/80 via-white to-amber-50/70 border-l-4 border-l-blue-600 flex flex-wrap items-center justify-between gap-4">
-        <div class="space-y-1">
-          <span class="text-[11px] font-extrabold uppercase tracking-wider bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-md border border-blue-200">
-            Physics Foundations
-          </span>
-          <h2 class="text-lg sm:text-xl font-black text-slate-900">
-            Two Core Forms of Mechanical Energy: Potential &amp; Kinetic
+      <!-- TOP NOTEBOOK BOX: POTENTIAL ENERGY (Ep) -->
+      <div class="studio-card rounded-2xl p-6 sm:p-7 space-y-5 bg-white border border-slate-200 shadow-xs">
+        
+        <!-- Header Title Box -->
+        <div class="inline-block border-2 border-orange-400 bg-orange-50/60 px-4 py-1.5 rounded-xl">
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
+            Potential Energy
           </h2>
-          <p class="text-xs sm:text-sm text-slate-600">
-            Before studying conservation of energy, understand how energy is stored (<strong class="text-blue-700">Position</strong>) and how it manifests in motion (<strong class="text-amber-700">Velocity</strong>).
-          </p>
         </div>
 
-        <button onclick="switchView('simulator')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-xs transition flex items-center gap-1.5">
-          <span>Go to Tab 2: Simulator</span>
-          <span>&rarr;</span>
-        </button>
+        <!-- Notes Bullet Points -->
+        <div class="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed max-w-4xl">
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              Potential energy, <strong>E<sub>p</sub></strong> is the energy <strong>possessed by an object due to its position</strong>.
+            </p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              Gravitational potential energy is part of potential energy.
+            </p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              The potential energy depends on the <strong>mass</strong> and <strong>height from ground level</strong>.
+            </p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              Potential energy also referred to as <strong>work done against gravity</strong>.
+            </p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              The unit for potential energy is <strong>Nm @ Joule ( J )</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Centered Clean Formula Card (No Images) -->
+        <div class="max-w-md mx-auto my-2">
+          <div class="bg-[#fceee0] border-2 border-dashed border-[#f97316] rounded-3xl p-5 text-center shadow-xs space-y-2">
+            <div class="text-2xl sm:text-3xl font-mono font-black text-slate-900 tracking-wider">
+              E<sub>p</sub> = mgh
+            </div>
+            <div class="text-xs font-mono text-slate-700 space-y-0.5 pt-1">
+              <div>m = mass ( kg )</div>
+              <div>g = gravity ( 9.81 ms<sup>-2</sup> )</div>
+              <div>h = height from the ground ( m )</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCEL-STYLE 3-PARAMETER SOLVER FOR POTENTIAL ENERGY -->
+        <div class="bg-slate-50/80 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black uppercase tracking-wider bg-orange-100 text-orange-800 px-2.5 py-1 rounded-md border border-orange-200">
+                POTENTIAL ENERGY CALCULATOR
+              </span>
+              <span class="text-xs font-mono text-slate-500">Fixed Earth gravity: g = 9.81 m/s²</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs">
+              <label class="font-bold text-slate-700">Find:</label>
+              <select id="peSolveFor" onchange="onPeSolveTargetChange()" class="bg-white border border-slate-300 font-bold text-orange-900 rounded-lg px-2 py-1 text-xs focus:ring-2 focus:ring-orange-500 outline-none">
+                <option value="ep">Potential Energy (Ep)</option>
+                <option value="h">Height (h)</option>
+                <option value="m">Mass (m)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Excel-Style Table Matrix -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs font-mono border-collapse border border-slate-300 bg-white rounded-xl shadow-2xs">
+              <thead>
+                <tr class="bg-emerald-50 text-slate-800 font-extrabold border-b border-slate-300 text-center">
+                  <th class="p-2 border-r border-slate-300 w-28">ROW</th>
+                  <th class="p-2 border-r border-slate-300">POTENTIAL ENERGY (J)</th>
+                  <th class="p-2 border-r border-slate-300">MASS (kg)</th>
+                  <th class="p-2">HEIGHT (m)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Inputs Row -->
+                <tr class="border-b border-slate-300 bg-amber-50/40">
+                  <td class="p-2 font-black text-white bg-orange-600 text-center border-r border-slate-300">Inputs</td>
+                  <td class="p-1 border-r border-slate-300 text-center">
+                    <input type="number" id="inPe_ep" step="0.1" value="353.16" oninput="calcPeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-orange-500 outline-none">
+                  </td>
+                  <td class="p-1 border-r border-slate-300 text-center">
+                    <input type="number" id="inPe_m" step="0.1" value="2.00" oninput="calcPeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-orange-500 outline-none">
+                  </td>
+                  <td class="p-1 text-center">
+                    <input type="number" id="inPe_h" step="0.1" value="18.00" oninput="calcPeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-orange-500 outline-none">
+                  </td>
+                </tr>
+                <!-- Outputs Row -->
+                <tr class="border-b border-slate-300 bg-cyan-50/40">
+                  <td class="p-2 font-black text-white bg-cyan-600 text-center border-r border-slate-300">Outputs</td>
+                  <td class="p-2 border-r border-slate-300 text-center font-black text-sm text-cyan-900" id="outPe_ep">353.16</td>
+                  <td class="p-2 border-r border-slate-300 text-center font-black text-sm text-cyan-900" id="outPe_m">-</td>
+                  <td class="p-2 text-center font-black text-sm text-cyan-900" id="outPe_h">-</td>
+                </tr>
+                <!-- Solved For Status -->
+                <tr class="bg-slate-100 text-slate-800 font-bold">
+                  <td class="p-2 text-center border-r border-slate-300 uppercase">Solved for</td>
+                  <td colspan="3" class="p-2 text-center text-xs font-black text-slate-800" id="solvedForPeText">
+                    POTENTIAL ENERGY ( E<sub>p</sub> = m &times; g &times; h = 2.00 &times; 9.81 &times; 18.00 = 353.16 J )
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Two Side-by-Side Reference Modules -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- SECOND NOTEBOOK BOX: KINETIC ENERGY (Ek) -->
+      <div class="studio-card rounded-2xl p-6 sm:p-7 space-y-5 bg-white border border-slate-200 shadow-xs">
+        
+        <!-- Header Title Box -->
+        <div class="inline-block border-2 border-orange-400 bg-orange-50/60 px-4 py-1.5 rounded-xl">
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
+            Kinetic Energy
+          </h2>
+        </div>
 
-        <!-- SECTION A: POTENTIAL ENERGY -->
-        <div class="studio-card rounded-3xl p-6 sm:p-7 bg-white space-y-5 border-2 border-orange-200/80 shadow-sm flex flex-col justify-between">
-          <div class="space-y-4">
-            
-            <div class="inline-block border-2 border-orange-400 bg-orange-50/60 px-5 py-2 rounded-2xl shadow-2xs">
-              <h3 class="text-lg font-black text-slate-900 tracking-tight">
-                Potential Energy
-              </h3>
-            </div>
-
-            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  <strong>Potential energy, E<sub>p</sub></strong> is the energy <strong>possessed by an object due to its position</strong>.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  <strong>Gravitational potential energy</strong> is part of potential energy.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  The potential energy depends on the <strong>mass</strong> and <strong>height</strong> from ground level.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  Potential energy also referred to as <strong>work done against gravity</strong>.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  The unit for potential energy is <strong>Nm @ Joule ( J )</strong>.
-                </p>
-              </li>
-            </ul>
+        <!-- Notes Bullet Points -->
+        <div class="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed max-w-4xl">
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              Kinetic energy, <strong>E<sub>k</sub></strong> is the energy an object <strong>possesses due to its motion</strong>.
+            </p>
           </div>
-
-          <div class="mt-4 pt-4 border-t border-slate-100 flex justify-center">
-            <!-- Peach Formula Card (Centered & Clean) -->
-            <div class="w-full max-w-md bg-[#ffe8d6] border-2 border-dashed border-[#f48c06] rounded-2xl p-5 text-center space-y-2.5 shadow-xs">
-              <div class="text-2xl sm:text-3xl font-serif italic font-bold text-slate-900">
-                E<sub>p</sub> = mgh
-              </div>
-              <div class="text-xs sm:text-sm text-slate-700 font-mono space-y-1 text-center border-t border-orange-200/80 pt-2.5">
-                <div><strong>m</strong> = mass ( kg )</div>
-                <div><strong>g</strong> = gravity ( ms<sup>-2</sup> )</div>
-                <div><strong>h</strong> = height from the ground ( m )</div>
-              </div>
-            </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              The kinetic energy of a moving object depends on its <strong>mass</strong> and <strong>velocity</strong>.
+            </p>
           </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              The unit for kinetic energy is <strong>Nm @ Joule ( J )</strong>
+            </p>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-slate-900 font-bold text-base leading-none mt-0.5">&bull;</span>
+            <p>
+              The greater the value of mass or velocity, the higher the kinetic energy possessed by an object.
+            </p>
+          </div>
+        </div>
 
-          <!-- EXCEL-STYLE 3-WAY SOLVER: POTENTIAL ENERGY -->
-          <div class="mt-5 pt-4 border-t-2 border-orange-200/70 space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-black tracking-wide text-orange-900 uppercase flex items-center gap-1.5">
-                <span>📊</span> Excel-Style Interactive Solver:
-              </span>
-              <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-300 text-[11px] font-bold">
-                <span class="text-slate-500 px-1 text-[10px]">Solve for:</span>
-                <button type="button" id="btnTargetPe_ep" onclick="setPeTarget('ep')" class="px-2.5 py-1 rounded-lg bg-orange-500 text-white font-black shadow-xs transition">
-                  E<sub>p</sub>
-                </button>
-                <button type="button" id="btnTargetPe_h" onclick="setPeTarget('h')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition">
-                  Height (h)
-                </button>
-                <button type="button" id="btnTargetPe_m" onclick="setPeTarget('m')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition">
-                  Mass (m)
-                </button>
-              </div>
+        <!-- Centered Clean Formula Card (No Images) -->
+        <div class="max-w-md mx-auto my-2">
+          <div class="bg-[#fceee0] border-2 border-dashed border-[#f97316] rounded-3xl p-5 text-center shadow-xs space-y-2">
+            <div class="text-2xl sm:text-3xl font-mono font-black text-slate-900 tracking-wider">
+              E<sub>k</sub> = &frac12; mv&sup2;
             </div>
-
-            <!-- Spreadsheet Table Layout -->
-            <div class="overflow-x-auto rounded-xl border-2 border-slate-700 shadow-sm font-mono text-xs">
-              <table class="w-full text-center border-collapse">
-                <thead>
-                  <tr class="bg-[#dcfce7] text-slate-900 font-black border-b-2 border-slate-700">
-                    <th class="py-2 px-3 border-r-2 border-slate-700 w-24">Category</th>
-                    <th class="py-2 px-3 border-r-2 border-slate-700">POTENTIAL ENERGY (J)</th>
-                    <th class="py-2 px-3 border-r-2 border-slate-700">MASS (kg)</th>
-                    <th class="py-2 px-3">HEIGHT (m)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b-2 border-slate-700 bg-white">
-                    <td class="py-2 px-3 bg-[#f97316] text-white font-black border-r-2 border-slate-700 text-left">
-                      Inputs
-                    </td>
-                    <td class="p-1 border-r-2 border-slate-700 bg-[#fef9c3]">
-                      <input id="inPe_ep" type="number" step="0.01" value="353.16" oninput="calcPeMatrix()" disabled class="w-full text-center font-bold bg-transparent focus:outline-none disabled:text-slate-400 py-1" placeholder="Solved" />
-                    </td>
-                    <td class="p-1 border-r-2 border-slate-700 bg-[#fef9c3]">
-                      <input id="inPe_m" type="number" step="0.1" value="2.00" oninput="calcPeMatrix()" class="w-full text-center font-bold bg-transparent focus:outline-none py-1" />
-                    </td>
-                    <td class="p-1 bg-[#fef9c3]">
-                      <input id="inPe_h" type="number" step="0.1" value="18.00" oninput="calcPeMatrix()" class="w-full text-center font-bold bg-transparent focus:outline-none py-1" />
-                    </td>
-                  </tr>
-
-                  <tr class="border-b-2 border-slate-700 bg-white">
-                    <td class="py-2 px-3 bg-[#06b6d4] text-white font-black border-r-2 border-slate-700 text-left">
-                      Outputs
-                    </td>
-                    <td id="outPe_cell_ep" class="py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900">
-                      <span id="outPe_val_ep">353.16</span>
-                    </td>
-                    <td id="outPe_cell_m" class="py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-white text-slate-400">
-                      <span id="outPe_val_m">-</span>
-                    </td>
-                    <td id="outPe_cell_h" class="py-2 px-2 font-black text-sm bg-white text-slate-400">
-                      <span id="outPe_val_h">-</span>
-                    </td>
-                  </tr>
-
-                  <tr class="bg-white">
-                    <td class="py-2 px-3 font-bold border-r-2 border-slate-700 text-left bg-slate-100 text-slate-700">
-                      Solved for
-                    </td>
-                    <td colspan="3" class="py-2 px-4 font-black tracking-wider text-slate-900 text-center bg-slate-50">
-                      <span id="lblPeSolvedFor" class="text-orange-600 font-extrabold text-sm">POTENTIAL ENERGY</span>
-                      <span id="lblPeFormulaApplied" class="text-[11px] text-slate-500 ml-2 font-mono">(E<sub>p</sub> = m &times; g &times; h)</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div id="peStepsBox" class="text-[11px] font-mono text-slate-800 bg-orange-50/70 p-2.5 rounded-xl border border-orange-200">
-              E<sub>p</sub> = 2.00 kg &times; 9.81 m/s² &times; 18.00 m = <strong class="text-orange-600 font-black">353.16 J</strong>
+            <div class="text-xs font-mono text-slate-700 space-y-0.5 pt-1">
+              <div>m = Mass ( kg )</div>
+              <div>v = velocity ( ms<sup>-1</sup> )</div>
             </div>
           </div>
         </div>
 
-        <!-- SECTION B: KINETIC ENERGY -->
-        <div class="studio-card rounded-3xl p-6 sm:p-7 bg-white space-y-5 border-2 border-orange-200/80 shadow-sm flex flex-col justify-between">
-          <div class="space-y-4">
-            
-            <div class="inline-block border-2 border-orange-400 bg-orange-50/60 px-5 py-2 rounded-2xl shadow-2xs">
-              <h3 class="text-lg font-black text-slate-900 tracking-tight">
-                Kinetic Energy
-              </h3>
-            </div>
-
-            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  <strong>Kinetic energy, E<sub>k</sub></strong> is the energy an object <strong>possesses due to its motion</strong>.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  The kinetic energy of a moving object <strong>depends on its mass and velocity</strong>.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  The unit for kinetic energy is <strong>Nm @ Joule ( J )</strong>.
-                </p>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="text-orange-500 font-black text-lg leading-none mt-0.5">&bull;</span>
-                <p>
-                  <strong>The greater the value of mass or velocity</strong>, the higher the kinetic energy possessed by an object.
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mt-4 pt-4 border-t border-slate-100 flex justify-center">
-            <!-- Peach Formula Card (Centered & Clean) -->
-            <div class="w-full max-w-md bg-[#ffe8d6] border-2 border-dashed border-[#f48c06] rounded-2xl p-5 text-center space-y-2.5 shadow-xs">
-              <div class="text-2xl sm:text-3xl font-serif italic font-bold text-slate-900">
-                E<sub>k</sub> = &frac12; mv<sup>2</sup>
-              </div>
-              <div class="text-xs sm:text-sm text-slate-700 font-mono space-y-1 text-center border-t border-orange-200/80 pt-2.5">
-                <div><strong>m</strong> = mass ( kg )</div>
-                <div><strong>v</strong> = velocity ( ms<sup>-1</sup> )</div>
-              </div>
+        <!-- EXCEL-STYLE 3-PARAMETER SOLVER FOR KINETIC ENERGY -->
+        <div class="bg-slate-50/80 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2">
+            <span class="text-xs font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200">
+              KINETIC ENERGY CALCULATOR
+            </span>
+            <div class="flex items-center gap-1.5 text-xs">
+              <label class="font-bold text-slate-700">Find:</label>
+              <select id="keSolveFor" onchange="onKeSolveTargetChange()" class="bg-white border border-slate-300 font-bold text-emerald-900 rounded-lg px-2 py-1 text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                <option value="ek">Kinetic Energy (Ek)</option>
+                <option value="v">Velocity (v)</option>
+                <option value="m">Mass (m)</option>
+              </select>
             </div>
           </div>
 
-          <!-- EXCEL-STYLE 3-WAY SOLVER: KINETIC ENERGY -->
-          <div class="mt-5 pt-4 border-t-2 border-orange-200/70 space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-black tracking-wide text-emerald-900 uppercase flex items-center gap-1.5">
-                <span>📊</span> Excel-Style Interactive Solver:
-              </span>
-              <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-300 text-[11px] font-bold">
-                <span class="text-slate-500 px-1 text-[10px]">Solve for:</span>
-                <button type="button" id="btnTargetKe_ek" onclick="setKeTarget('ek')" class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-black shadow-xs transition">
-                  E<sub>k</sub>
-                </button>
-                <button type="button" id="btnTargetKe_v" onclick="setKeTarget('v')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition">
-                  Velocity (v)
-                </button>
-                <button type="button" id="btnTargetKe_m" onclick="setKeTarget('m')" class="px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition">
-                  Mass (m)
-                </button>
-              </div>
-            </div>
-
-            <!-- Spreadsheet Table Layout -->
-            <div class="overflow-x-auto rounded-xl border-2 border-slate-700 shadow-sm font-mono text-xs">
-              <table class="w-full text-center border-collapse">
-                <thead>
-                  <tr class="bg-[#dcfce7] text-slate-900 font-black border-b-2 border-slate-700">
-                    <th class="py-2 px-3 border-r-2 border-slate-700 w-24">Category</th>
-                    <th class="py-2 px-3 border-r-2 border-slate-700">KINETIC ENERGY (J)</th>
-                    <th class="py-2 px-3 border-r-2 border-slate-700">MASS (kg)</th>
-                    <th class="py-2 px-3">VELOCITY (m/s)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b-2 border-slate-700 bg-white">
-                    <td class="py-2 px-3 bg-[#f97316] text-white font-black border-r-2 border-slate-700 text-left">
-                      Inputs
-                    </td>
-                    <td class="p-1 border-r-2 border-slate-700 bg-[#fef9c3]">
-                      <input id="inKe_ek" type="number" step="0.01" value="0.02" oninput="calcKeMatrix()" disabled class="w-full text-center font-bold bg-transparent focus:outline-none disabled:text-slate-400 py-1" placeholder="Solved" />
-                    </td>
-                    <td class="p-1 border-r-2 border-slate-700 bg-[#fef9c3]">
-                      <input id="inKe_m" type="number" step="0.001" value="0.01" oninput="calcKeMatrix()" class="w-full text-center font-bold bg-transparent focus:outline-none py-1" />
-                    </td>
-                    <td class="p-1 bg-[#fef9c3]">
-                      <input id="inKe_v" type="number" step="0.1" value="2.00" oninput="calcKeMatrix()" class="w-full text-center font-bold bg-transparent focus:outline-none py-1" />
-                    </td>
-                  </tr>
-
-                  <tr class="border-b-2 border-slate-700 bg-white">
-                    <td class="py-2 px-3 bg-[#06b6d4] text-white font-black border-r-2 border-slate-700 text-left">
-                      Outputs
-                    </td>
-                    <td id="outKe_cell_ek" class="py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900">
-                      <span id="outKe_val_ek">0.02</span>
-                    </td>
-                    <td id="outKe_cell_m" class="py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-white text-slate-400">
-                      <span id="outKe_val_m">-</span>
-                    </td>
-                    <td id="outKe_cell_v" class="py-2 px-2 font-black text-sm bg-white text-slate-400">
-                      <span id="outKe_val_v">-</span>
-                    </td>
-                  </tr>
-
-                  <tr class="bg-white">
-                    <td class="py-2 px-3 font-bold border-r-2 border-slate-700 text-left bg-slate-100 text-slate-700">
-                      Solved for
-                    </td>
-                    <td colspan="3" class="py-2 px-4 font-black tracking-wider text-slate-900 text-center bg-slate-50">
-                      <span id="lblKeSolvedFor" class="text-emerald-700 font-extrabold text-sm">KINETIC ENERGY</span>
-                      <span id="lblKeFormulaApplied" class="text-[11px] text-slate-500 ml-2 font-mono">(E<sub>k</sub> = &frac12;mv²)</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div id="keStepsBox" class="text-[11px] font-mono text-slate-800 bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
-              E<sub>k</sub> = &frac12; &times; 0.010 kg &times; (2.00 m/s)² = <strong class="text-emerald-700 font-black">0.02 J</strong>
-            </div>
+          <!-- Excel-Style Table Matrix -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs font-mono border-collapse border border-slate-300 bg-white rounded-xl shadow-2xs">
+              <thead>
+                <tr class="bg-emerald-50 text-slate-800 font-extrabold border-b border-slate-300 text-center">
+                  <th class="p-2 border-r border-slate-300 w-28">ROW</th>
+                  <th class="p-2 border-r border-slate-300">KINETIC ENERGY (J)</th>
+                  <th class="p-2 border-r border-slate-300">MASS (kg)</th>
+                  <th class="p-2">VELOCITY (m/s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Inputs Row -->
+                <tr class="border-b border-slate-300 bg-amber-50/40">
+                  <td class="p-2 font-black text-white bg-orange-600 text-center border-r border-slate-300">Inputs</td>
+                  <td class="p-1 border-r border-slate-300 text-center">
+                    <input type="number" id="inKe_ek" step="0.01" value="0.02" oninput="calcKeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-emerald-500 outline-none">
+                  </td>
+                  <td class="p-1 border-r border-slate-300 text-center">
+                    <input type="number" id="inKe_m" step="0.01" value="0.01" oninput="calcKeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-emerald-500 outline-none">
+                  </td>
+                  <td class="p-1 text-center">
+                    <input type="number" id="inKe_v" step="0.01" value="2.00" oninput="calcKeMatrix()" class="w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-emerald-500 outline-none">
+                  </td>
+                </tr>
+                <!-- Outputs Row -->
+                <tr class="border-b border-slate-300 bg-cyan-50/40">
+                  <td class="p-2 font-black text-white bg-cyan-600 text-center border-r border-slate-300">Outputs</td>
+                  <td class="p-2 border-r border-slate-300 text-center font-black text-sm text-cyan-900" id="outKe_ek">0.02</td>
+                  <td class="p-2 border-r border-slate-300 text-center font-black text-sm text-cyan-900" id="outKe_m">-</td>
+                  <td class="p-2 text-center font-black text-sm text-cyan-900" id="outKe_v">-</td>
+                </tr>
+                <!-- Solved For Status -->
+                <tr class="bg-slate-100 text-slate-800 font-bold">
+                  <td class="p-2 text-center border-r border-slate-300 uppercase">Solved for</td>
+                  <td colspan="3" class="p-2 text-center text-xs font-black text-slate-800" id="solvedForKeText">
+                    KINETIC ENERGY ( E<sub>k</sub> = &frac12; &times; m &times; v&sup2; = &frac12; &times; 0.01 &times; 2.00&sup2; = 0.02 J )
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
+      </div>
+
+      <!-- Forward Action Link to Tab 2 -->
+      <div class="flex justify-center pt-2">
+        <button onclick="switchView('simulator')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-extrabold shadow-md shadow-blue-500/20 transition flex items-center gap-2 active:scale-95">
+          <span>🔬 Continue to Principle of Conservation of Energy &amp; Simulator</span>
+          <span>&rarr;</span>
+        </button>
       </div>
 
     </div>
 
     <!-- ================================================================= -->
-    <!-- TAB 2: SIMULATOR & POSITIONS (A–F)                                -->
+    <!-- TAB 2: INTERACTIVE SIMULATOR & POSITIONS (A–F)                    -->
     <!-- ================================================================= -->
     <div id="viewSimulator" class="tab-pane space-y-6">
-
-      <!-- Theory Summary Banner -->
-      <div class="studio-card rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
-          <div class="inline-flex items-center gap-2 border-2 border-orange-400 bg-orange-50 px-3.5 py-1 rounded-xl shadow-xs">
-            <span class="text-base">📌</span>
-            <h3 class="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-              Principle of Conservation of Energy
-            </h3>
-          </div>
-          <span class="text-xs font-mono text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
-            Total Mechanical Energy = Constant (100%)
-          </span>
+      
+      <!-- Theory Briefing Card in Simulator Tab -->
+      <div class="studio-card rounded-2xl p-5 sm:p-6 space-y-4 bg-white border border-slate-200">
+        <div class="inline-flex items-center gap-2 border-2 border-orange-400 bg-orange-50 px-3.5 py-1.5 rounded-xl">
+          <span class="text-base">⚖️</span>
+          <h2 class="text-base sm:text-lg font-black text-slate-900 tracking-tight">
+            Principle of Conservation of Energy
+          </h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          <div class="lg:col-span-7 space-y-2 text-xs sm:text-[13px] text-slate-700 leading-relaxed">
-            <p>
-              &bull; <strong>The principle of conservation of energy</strong> states that energy can neither be created nor destroyed, but can only be transformed from one form to another.
-            </p>
-            <p>
-              &bull; As the ball travels through points <strong>A &rarr; B &rarr; C &rarr; D &rarr; E &rarr; F</strong>, whenever height decreases, <strong class="text-blue-700">E<sub>p</sub></strong> converts to <strong class="text-emerald-700">E<sub>k</sub></strong>; whenever it climbs, <strong class="text-emerald-700">E<sub>k</sub></strong> converts back to <strong class="text-blue-700">E<sub>p</sub></strong>.
-            </p>
-          </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <strong>The principle of conservation of energy</strong> states that energy can neither be created nor destroyed, but can be converted from one form to another. In an isolated system, the total mechanical energy remains 100% constant throughout all elevations.
+        </p>
 
-          <!-- Green Notebook Card -->
-          <div class="lg:col-span-5 bg-[#dcf3e7] border-2 border-[#76ba99] rounded-2xl p-3.5 text-center shadow-xs space-y-1.5">
-            <p class="text-[11px] text-emerald-950 font-bold">
-              Assume maximum energy is 100%:
+        <!-- Signature Green Notebook Card -->
+        <div class="max-w-md mx-auto my-1 relative">
+          <div class="flex justify-center gap-3.5 -mb-2.5 relative z-10">
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+            <div class="w-3.5 h-6 rounded-full bg-rose-500 shadow-xs border border-rose-600"></div>
+          </div>
+          <div class="bg-[#dcf3e7] border-4 border-[#76ba99] rounded-3xl p-5 text-center shadow-md space-y-2">
+            <p class="text-xs sm:text-sm text-emerald-950 font-semibold leading-relaxed">
+              Assume maximum energy is <strong>100%</strong>, therefore:
             </p>
-            <div class="bg-white py-2 px-4 rounded-xl inline-block border border-emerald-300 font-mono font-black text-sm text-slate-900 shadow-2xs">
-              E<sub>p</sub> + E<sub>k</sub> = 100% (Constant)
+            <div class="bg-white py-2.5 px-5 rounded-2xl inline-block border-2 border-emerald-300 shadow-xs space-y-1">
+              <div class="text-lg sm:text-xl font-mono font-black text-slate-900 tracking-wide">
+                E<sub>p</sub> + E<sub>k</sub> = 100% (Constant)
+              </div>
+              <div class="text-[11px] font-mono font-bold text-emerald-800 border-t border-slate-200 pt-1">
+                Total Mechanical Energy = Constant
+              </div>
             </div>
-            <p class="text-[10px] text-emerald-800 font-mono">
-              Potential Energy (mgh) + Kinetic Energy (&frac12;mv²)
-            </p>
           </div>
         </div>
       </div>
 
-      <!-- Real-Time Telemetry Dashboard -->
-      <div class="rounded-2xl p-4 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white shadow-md border border-slate-700/60 space-y-3">
+      <!-- Studio Controls Bar & Jumps -->
+      <div class="studio-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-white via-slate-50 to-indigo-50/30">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-full shadow-xs">
+            Interactive Physics Laboratory
+          </span>
+          <h2 class="text-base sm:text-lg font-black text-slate-900 mt-1.5 flex items-center gap-2">
+            Undulating Track Simulation (Points A &rarr; F)
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <button id="btnPlay" onclick="togglePlay()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-blue-500/25 active:scale-95">
+            <span id="playIcon">▶</span>
+            <span id="playLabel">Play</span>
+          </button>
+          
+          <div class="h-6 w-px bg-slate-300 mx-1"></div>
+
+          <button onclick="setBallPosition('A')" class="px-2.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold text-xs border border-rose-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span> A (Top)
+          </button>
+          <button onclick="setBallPosition('B')" class="px-2.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-extrabold text-xs border border-emerald-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> B (Valley)
+          </button>
+          <button onclick="setBallPosition('C')" class="px-2.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 font-extrabold text-xs border border-purple-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-purple-500"></span> C (Mid crest)
+          </button>
+          <button onclick="setBallPosition('D')" class="px-2.5 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-extrabold text-xs border border-teal-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-teal-500"></span> D (Valley)
+          </button>
+          <button onclick="setBallPosition('E')" class="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-extrabold text-xs border border-amber-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span> E (Low crest)
+          </button>
+          <button onclick="setBallPosition('F')" class="px-2.5 py-1.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 font-extrabold text-xs border border-sky-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-sky-500"></span> F (Bottom)
+          </button>
+          <button onclick="resetSim()" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 transition active:scale-95">
+            Reset ↺
+          </button>
+        </div>
+      </div>
+
+      <!-- VIBRANT DEDICATED TELEMETRY DASHBOARD -->
+      <div class="rounded-2xl p-4 bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white shadow-lg shadow-indigo-950/25 border border-slate-700/60 space-y-3.5">
+        
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="bg-blue-950/80 p-3 rounded-xl border border-blue-500/40 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-black uppercase tracking-wider text-blue-400 block">E<sub>p</sub> (Potential)</span>
+          
+          <!-- Ep Glowing Card -->
+          <div class="bg-gradient-to-br from-blue-950/80 to-blue-900/40 p-3 rounded-xl border border-blue-500/40 flex items-center justify-between shadow-inner">
+            <div class="space-y-0.5">
+              <span class="text-[10px] font-black uppercase tracking-wider text-blue-400 block flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                Potential Energy (E<sub>p</sub>)
+              </span>
               <div class="flex items-baseline gap-2">
                 <span id="hudPE" class="text-xl font-mono font-black text-blue-200">100.0%</span>
                 <span id="hudPEJoule" class="text-xs font-mono font-bold text-blue-300/80">(117.72 J)</span>
               </div>
             </div>
-            <span class="text-2xl opacity-70">🏔️</span>
+            <div class="text-2xl opacity-70">🏔️</div>
           </div>
 
-          <div class="bg-emerald-950/80 p-3 rounded-xl border border-emerald-500/40 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-black uppercase tracking-wider text-emerald-400 block">E<sub>k</sub> (Kinetic)</span>
+          <!-- Ek Glowing Card -->
+          <div class="bg-gradient-to-br from-emerald-950/80 to-emerald-900/40 p-3 rounded-xl border border-emerald-500/40 flex items-center justify-between shadow-inner">
+            <div class="space-y-0.5">
+              <span class="text-[10px] font-black uppercase tracking-wider text-emerald-400 block flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Kinetic Energy (E<sub>k</sub>)
+              </span>
               <div class="flex items-baseline gap-2">
                 <span id="hudKE" class="text-xl font-mono font-black text-emerald-200">0.0%</span>
                 <span id="hudKEJoule" class="text-xs font-mono font-bold text-emerald-300/80">(0.00 J)</span>
               </div>
             </div>
-            <span class="text-2xl opacity-70">⚡</span>
+            <div class="text-2xl opacity-70">⚡</div>
           </div>
 
-          <div class="bg-purple-950/80 p-3 rounded-xl border border-amber-500/40 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-black uppercase tracking-wider text-amber-300 block">Total Mechanical Energy</span>
+          <!-- Total Energy Glowing Card -->
+          <div class="bg-gradient-to-br from-purple-950/80 to-amber-950/40 p-3 rounded-xl border border-amber-500/40 flex items-center justify-between shadow-inner">
+            <div class="space-y-0.5">
+              <span class="text-[10px] font-black uppercase tracking-wider text-amber-300 block flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                Total Mechanical Energy
+              </span>
               <div class="flex items-baseline gap-2">
                 <span id="hudTotal" class="text-xl font-mono font-black text-amber-200">100.0%</span>
                 <span id="hudTotalJoule" class="text-xs font-mono font-bold text-amber-300/80">(117.72 J)</span>
               </div>
             </div>
-            <span class="text-2xl opacity-70">🔒</span>
+            <div class="text-2xl opacity-70">🔒</div>
+          </div>
+
+        </div>
+
+        <!-- Real-Time Stacked Energy Bar -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-[11px] font-mono font-bold text-slate-300">
+            <span class="text-blue-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+              E<sub>p</sub>: <span id="barPEText" class="text-white">100%</span>
+            </span>
+            <span class="text-amber-300 font-extrabold">
+              E<sub>p</sub> + E<sub>k</sub> = 100% (Strictly Conserved)
+            </span>
+            <span class="text-emerald-400 flex items-center gap-1.5">
+              E<sub>k</sub>: <span id="barKEText" class="text-white">0%</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </span>
+          </div>
+
+          <div class="w-full h-4 bg-slate-900 rounded-full overflow-hidden flex border border-slate-700 shadow-inner p-0.5">
+            <div id="barPE" class="bg-gradient-to-r from-blue-600 to-cyan-500 h-full rounded-l-full transition-all duration-75 shadow-sm shadow-blue-500/50" style="width: 100%;"></div>
+            <div id="barKE" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-r-full transition-all duration-75 shadow-sm shadow-emerald-500/50" style="width: 0%;"></div>
           </div>
         </div>
 
-        <div class="space-y-1">
-          <div class="flex justify-between text-[11px] font-mono font-bold text-slate-300">
-            <span class="text-blue-400">E<sub>p</sub>: <span id="barPEText" class="text-white">100%</span></span>
-            <span class="text-amber-300 font-extrabold">E<sub>p</sub> + E<sub>k</sub> = 100% (Strictly Conserved)</span>
-            <span class="text-emerald-400">E<sub>k</sub>: <span id="barKEText" class="text-white">0%</span></span>
-          </div>
-          <div class="w-full h-3.5 bg-slate-900 rounded-full overflow-hidden flex border border-slate-700 shadow-inner">
-            <div id="barPE" class="bg-gradient-to-r from-blue-600 to-cyan-500 h-full transition-all duration-75" style="width: 100%;"></div>
-            <div id="barKE" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full transition-all duration-75" style="width: 0%;"></div>
-          </div>
-        </div>
       </div>
 
-      <!-- Canvas Box with Integrated Direct Dragging -->
-      <div class="studio-card rounded-2xl p-4 sm:p-5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
-          <div>
-            <span class="text-[10px] font-extrabold uppercase tracking-wider bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-md border border-blue-200">
-              Interactive Undulating Track
-            </span>
-            <h4 class="text-sm font-black text-slate-900 mt-1">Multi-Curve Motion Simulation (A &rarr; F)</h4>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button id="btnPlay" onclick="togglePlay()" class="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
-              <span id="playIcon">▶</span>
-              <span id="playLabel">Play</span>
-            </button>
-            <button onclick="setBallPosition('A')" class="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-300">A</button>
-            <button onclick="setBallPosition('B')" class="px-2 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs border border-emerald-300">B</button>
-            <button onclick="setBallPosition('C')" class="px-2 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-800 font-bold text-xs border border-purple-300">C</button>
-            <button onclick="setBallPosition('D')" class="px-2 py-1 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs border border-teal-300">D</button>
-            <button onclick="setBallPosition('E')" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs border border-amber-300">E</button>
-            <button onclick="setBallPosition('F')" class="px-2 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-800 font-bold text-xs border border-sky-300">F</button>
-            <button onclick="resetSim()" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300">Reset ↺</button>
-          </div>
-        </div>
-
+      <!-- Canvas Box with Direct Interactive Dragging -->
+      <div class="studio-card rounded-2xl p-4 sm:p-5 space-y-3">
+        
         <div class="relative w-full aspect-[16/9] min-h-[380px] max-h-[520px] bg-gradient-to-b from-sky-50/40 via-white to-slate-100/90 rounded-2xl border border-slate-200 overflow-hidden shadow-inner cursor-crosshair select-none" id="canvasContainer">
           <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-xs border border-slate-200 px-3 py-1.5 rounded-xl text-xs text-slate-700 font-bold shadow-xs flex items-center gap-2 pointer-events-none z-10">
             <span class="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping"></span>
-            <span>Interactive: Drag the blue ball or drag crest handles (A, C, E) vertically</span>
+            <span>Interactive: Drag ball or handles (A, C, E) up/down</span>
           </div>
           <canvas id="uCurveCanvas" class="w-full h-full block"></canvas>
         </div>
 
         <!-- Manual Ball Position Scrubber -->
-        <div class="bg-gradient-to-r from-rose-50/60 via-slate-50 to-sky-50/60 border border-slate-200 rounded-xl p-3.5 flex flex-col sm:flex-row items-center gap-3">
-          <div class="flex items-center gap-2 min-w-max">
-            <span class="text-lg">🎚️</span>
-            <label for="manualSlider" class="text-xs font-bold text-slate-800">
+        <div class="bg-gradient-to-r from-rose-50/60 via-slate-50 to-sky-50/60 border border-slate-200 rounded-xl p-2.5 flex flex-col sm:flex-row items-center gap-2.5">
+          <div class="flex items-center gap-1.5 min-w-max">
+            <span class="text-sm">🎚️</span>
+            <label for="manualSlider" class="text-[11px] font-bold text-slate-800">
               Manual Ball Scrubber:
             </label>
           </div>
-          <div class="w-full flex items-center gap-3">
-            <span class="text-[11px] font-mono font-extrabold text-rose-600 bg-rose-100 px-2 py-0.5 rounded">A (0%)</span>
+          <div class="w-full flex items-center gap-2.5">
+            <span class="text-[10px] font-mono font-extrabold text-rose-600 bg-rose-100 px-1.5 py-0.5 rounded">A (0%)</span>
             <input 
               type="range" 
               id="manualSlider" 
@@ -550,150 +562,155 @@
               max="1000" 
               value="0" 
               oninput="onManualSliderMove(this.value)"
-              class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600 focus:outline-none"
+              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600 focus:outline-none"
             />
-            <span class="text-[11px] font-mono font-extrabold text-sky-600 bg-sky-100 px-2 py-0.5 rounded">F (100%)</span>
-            <span id="sliderPctLabel" class="text-xs font-mono font-black text-purple-900 w-14 text-right">0%</span>
+            <span class="text-[10px] font-mono font-extrabold text-sky-600 bg-sky-100 px-1.5 py-0.5 rounded">F (100%)</span>
+            <span id="sliderPctLabel" class="text-[11px] font-mono font-black text-purple-900 w-12 text-right">0%</span>
           </div>
         </div>
 
-        <!-- COMPACT CUSTOM HEIGHT & MASS STEPPERS (PLACED DIRECTLY BELOW SIMULATOR) -->
-        <div class="bg-slate-50/80 border border-slate-200 rounded-2xl p-3 sm:p-3.5 space-y-2.5 shadow-2xs">
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
-            <div class="flex items-center gap-2">
-              <span class="px-2 py-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-[11px] font-extrabold shadow-2xs flex items-center gap-1">
-                <span>⚙️</span> Controls
-              </span>
-              <span class="text-xs font-extrabold text-slate-900">Custom Height &amp; Mass Steppers</span>
-              <span class="hidden md:inline text-[11px] text-slate-500 font-medium">(Watch track curve update in real-time above)</span>
-            </div>
-
-            <button onclick="resetDefaultParameters()" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition shadow-2xs active:scale-95">
+        <!-- COMPACT CUSTOM HEIGHT & MASS STEPPERS (PLACED DIRECTLY UNDER SIMULATOR) -->
+        <div class="bg-slate-50/80 p-3 rounded-xl border border-slate-200 space-y-2">
+          
+          <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+            <span class="text-[11px] font-extrabold text-slate-800 flex items-center gap-1.5">
+              <span>⚙️</span> Custom Height &amp; Mass Steppers (Live Physics Synchronization)
+            </span>
+            <button onclick="resetDefaultParameters()" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition shadow-2xs">
               Reset Values ↺
             </button>
           </div>
 
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
-            <!-- Mass Card -->
-            <div class="bg-gradient-to-br from-rose-50/90 to-pink-50/50 p-2.5 rounded-xl border-2 border-rose-300 space-y-1.5 shadow-2xs">
-              <div class="flex justify-between items-center text-[11px] font-bold">
-                <label class="text-rose-950 flex items-center gap-1 font-extrabold">
-                  <span>⚖️</span> Mass (m):
-                </label>
-                <span class="text-[9px] text-rose-600 font-mono font-semibold">±0.2 kg</span>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            
+            <!-- Mass (m) Stepper -->
+            <div class="bg-white p-2 rounded-xl border border-rose-200 space-y-1 shadow-2xs">
+              <div class="flex justify-between items-center text-[10px] font-bold text-rose-950">
+                <span>⚖️ Mass (m):</span>
+                <span class="text-[9px] text-rose-500 font-mono">±0.2 kg</span>
               </div>
-              <div class="flex items-center justify-between gap-1.5 bg-white px-1.5 py-0.5 rounded-lg border border-rose-300 shadow-inner">
-                <button type="button" onclick="stepParam('m', -0.2)" class="w-7 h-7 rounded-md bg-rose-50 hover:bg-rose-100 active:scale-90 text-rose-800 border border-rose-300 flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▼</button>
+              <div class="flex items-center justify-between gap-1 bg-rose-50/50 p-1 rounded-lg border border-rose-100">
+                <button type="button" onclick="stepParam('m', -0.2)" class="w-7 h-7 rounded-md bg-white hover:bg-rose-100 active:scale-90 text-rose-800 border border-rose-300 flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▼</button>
                 <div class="flex-1 text-center font-mono">
-                  <span id="sliderDispM" class="text-xs sm:text-sm font-black text-rose-700">2.0 kg</span>
+                  <span id="sliderDispM" class="text-xs font-black text-rose-700">2.0 kg</span>
                 </div>
-                <button type="button" onclick="stepParam('m', 0.2)" class="w-7 h-7 rounded-md bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('m', 0.2)" class="w-7 h-7 rounded-md bg-rose-600 hover:bg-rose-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▲</button>
               </div>
-              <input type="range" id="slider_m" min="0.2" max="10.0" step="0.2" value="2.0" oninput="onParamChange('m', this.value)" class="w-full h-1 bg-rose-200 rounded-lg cursor-pointer accent-rose-600" />
-              <div class="flex justify-between text-[9px] text-rose-500 font-mono"><span>0.2 kg</span><span>10.0 kg</span></div>
+              <input type="range" id="slider_m" min="0.2" max="10.0" step="0.2" value="2.0" oninput="onParamChange('m', this.value)" class="w-full h-1 bg-rose-200 rounded cursor-pointer accent-rose-600" />
             </div>
 
-            <!-- Summit A Height Card -->
-            <div class="bg-gradient-to-br from-sky-50/90 to-blue-50/50 p-2.5 rounded-xl border-2 border-sky-300 space-y-1.5 shadow-2xs">
-              <div class="flex justify-between items-center text-[11px] font-bold">
-                <label class="text-sky-950 flex items-center gap-1 font-extrabold">
-                  <span>🏔️</span> Summit A (h₁):
-                </label>
-                <span class="text-[9px] text-sky-600 font-mono font-semibold">±0.5 m</span>
+            <!-- Summit A Height (h1) Stepper -->
+            <div class="bg-white p-2 rounded-xl border border-sky-200 space-y-1 shadow-2xs">
+              <div class="flex justify-between items-center text-[10px] font-bold text-sky-950">
+                <span>🏔️ Summit A (h₁):</span>
+                <span class="text-[9px] text-sky-500 font-mono">±0.5 m</span>
               </div>
-              <div class="flex items-center justify-between gap-1.5 bg-white px-1.5 py-0.5 rounded-lg border border-sky-300 shadow-inner">
-                <button type="button" onclick="stepParam('h1', -0.5)" class="w-7 h-7 rounded-md bg-sky-50 hover:bg-sky-100 active:scale-90 text-sky-800 border border-sky-300 flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▼</button>
+              <div class="flex items-center justify-between gap-1 bg-sky-50/50 p-1 rounded-lg border border-sky-100">
+                <button type="button" onclick="stepParam('h1', -0.5)" class="w-7 h-7 rounded-md bg-white hover:bg-sky-100 active:scale-90 text-sky-800 border border-sky-300 flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▼</button>
                 <div class="flex-1 text-center font-mono">
-                  <span id="sliderDispH1" class="text-xs sm:text-sm font-black text-sky-700">6.0 m</span>
+                  <span id="sliderDispH1" class="text-xs font-black text-sky-700">6.0 m</span>
                 </div>
-                <button type="button" onclick="stepParam('h1', 0.5)" class="w-7 h-7 rounded-md bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h1', 0.5)" class="w-7 h-7 rounded-md bg-sky-600 hover:bg-sky-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▲</button>
               </div>
-              <input type="range" id="slider_h1" min="3.0" max="15.0" step="0.5" value="6.0" oninput="onParamChange('h1', this.value)" class="w-full h-1 bg-sky-200 rounded-lg cursor-pointer accent-sky-600" />
-              <div class="flex justify-between text-[9px] text-sky-500 font-mono"><span>3.0 m</span><span>15.0 m</span></div>
+              <input type="range" id="slider_h1" min="3.0" max="15.0" step="0.5" value="6.0" oninput="onParamChange('h1', this.value)" class="w-full h-1 bg-sky-200 rounded cursor-pointer accent-sky-600" />
             </div>
 
-            <!-- Crest C Height Card -->
-            <div class="bg-gradient-to-br from-purple-50/90 to-indigo-50/50 p-2.5 rounded-xl border-2 border-purple-300 space-y-1.5 shadow-2xs">
-              <div class="flex justify-between items-center text-[11px] font-bold">
-                <label class="text-purple-950 flex items-center gap-1 font-extrabold">
-                  <span>⛰️</span> Crest C (h₂):
-                </label>
-                <span class="text-[9px] text-purple-600 font-mono font-semibold">±0.2 m</span>
+            <!-- Mid crest C Height (h2) Stepper -->
+            <div class="bg-white p-2 rounded-xl border border-purple-200 space-y-1 shadow-2xs">
+              <div class="flex justify-between items-center text-[10px] font-bold text-purple-950">
+                <span>⛰️ crest C (h₂):</span>
+                <span class="text-[9px] text-purple-500 font-mono">±0.2 m</span>
               </div>
-              <div class="flex items-center justify-between gap-1.5 bg-white px-1.5 py-0.5 rounded-lg border border-purple-300 shadow-inner">
-                <button type="button" onclick="stepParam('h2', -0.2)" class="w-7 h-7 rounded-md bg-purple-50 hover:bg-purple-100 active:scale-90 text-purple-800 border border-purple-300 flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▼</button>
+              <div class="flex items-center justify-between gap-1 bg-purple-50/50 p-1 rounded-lg border border-purple-100">
+                <button type="button" onclick="stepParam('h2', -0.2)" class="w-7 h-7 rounded-md bg-white hover:bg-purple-100 active:scale-90 text-purple-800 border border-purple-300 flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▼</button>
                 <div class="flex-1 text-center font-mono">
-                  <span id="sliderDispH2" class="text-xs sm:text-sm font-black text-purple-700">3.8 m</span>
+                  <span id="sliderDispH2" class="text-xs font-black text-purple-700">3.8 m</span>
                 </div>
-                <button type="button" onclick="stepParam('h2', 0.2)" class="w-7 h-7 rounded-md bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h2', 0.2)" class="w-7 h-7 rounded-md bg-purple-600 hover:bg-purple-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▲</button>
               </div>
-              <input type="range" id="slider_h2" min="1.0" max="12.0" step="0.2" value="3.8" oninput="onParamChange('h2', this.value)" class="w-full h-1 bg-purple-200 rounded-lg cursor-pointer accent-purple-600" />
-              <div class="flex justify-between text-[9px] text-purple-500 font-mono"><span>1.0 m</span><span>&lt; h₁</span></div>
+              <input type="range" id="slider_h2" min="1.0" max="12.0" step="0.2" value="3.8" oninput="onParamChange('h2', this.value)" class="w-full h-1 bg-purple-200 rounded cursor-pointer accent-purple-600" />
             </div>
 
-            <!-- Crest E Height Card -->
-            <div class="bg-gradient-to-br from-amber-50/90 to-orange-50/50 p-2.5 rounded-xl border-2 border-amber-300 space-y-1.5 shadow-2xs">
-              <div class="flex justify-between items-center text-[11px] font-bold">
-                <label class="text-amber-950 flex items-center gap-1 font-extrabold">
-                  <span>🏕️</span> Crest E (h₃):
-                </label>
-                <span class="text-[9px] text-amber-600 font-mono font-semibold">±0.2 m</span>
+            <!-- Lower crest E Height (h3) Stepper -->
+            <div class="bg-white p-2 rounded-xl border border-amber-200 space-y-1 shadow-2xs">
+              <div class="flex justify-between items-center text-[10px] font-bold text-amber-950">
+                <span>🏕️ crest E (h₃):</span>
+                <span class="text-[9px] text-amber-500 font-mono">±0.2 m</span>
               </div>
-              <div class="flex items-center justify-between gap-1.5 bg-white px-1.5 py-0.5 rounded-lg border border-amber-300 shadow-inner">
-                <button type="button" onclick="stepParam('h3', -0.2)" class="w-7 h-7 rounded-md bg-amber-50 hover:bg-amber-100 active:scale-90 text-amber-800 border border-amber-300 flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▼</button>
+              <div class="flex items-center justify-between gap-1 bg-amber-50/50 p-1 rounded-lg border border-amber-100">
+                <button type="button" onclick="stepParam('h3', -0.2)" class="w-7 h-7 rounded-md bg-white hover:bg-amber-100 active:scale-90 text-amber-800 border border-amber-300 flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▼</button>
                 <div class="flex-1 text-center font-mono">
-                  <span id="sliderDispH3" class="text-xs sm:text-sm font-black text-amber-700">1.8 m</span>
+                  <span id="sliderDispH3" class="text-xs font-black text-amber-700">1.8 m</span>
                 </div>
-                <button type="button" onclick="stepParam('h3', 0.2)" class="w-7 h-7 rounded-md bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition select-none shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h3', 0.2)" class="w-7 h-7 rounded-md bg-amber-600 hover:bg-amber-700 active:scale-90 text-white flex items-center justify-center font-black text-xs transition shadow-2xs select-none">▲</button>
               </div>
-              <input type="range" id="slider_h3" min="0.5" max="10.0" step="0.2" value="1.8" oninput="onParamChange('h3', this.value)" class="w-full h-1 bg-amber-200 rounded-lg cursor-pointer accent-amber-600" />
-              <div class="flex justify-between text-[9px] text-amber-500 font-mono"><span>0.5 m</span><span>&lt; h₂</span></div>
+              <input type="range" id="slider_h3" min="0.5" max="10.0" step="0.2" value="1.8" oninput="onParamChange('h3', this.value)" class="w-full h-1 bg-amber-200 rounded cursor-pointer accent-amber-600" />
             </div>
+
           </div>
+
         </div>
+
       </div>
 
       <!-- 3-PHASE ENERGY OVERVIEW CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="rounded-2xl border-2 border-rose-200 bg-rose-50/50 p-4 sm:p-5 space-y-2 shadow-xs hover:shadow-md transition">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-black shadow-xs">1</span>
-            <h4 class="font-extrabold text-rose-900 text-sm">Peak Elevations (A, C, E)</h4>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+        
+        <!-- Phase 1: crest Elevations (A, C, E) -->
+        <div class="rounded-2xl border-2 border-rose-200 bg-rose-50/50 p-4 space-y-1.5 shadow-xs hover:shadow-md transition">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-black shadow-xs">
+              1
+            </span>
+            <h4 class="font-extrabold text-rose-900 text-xs sm:text-sm">
+              crest Elevations (A, C, E)
+            </h4>
           </div>
-          <p class="text-xs sm:text-[13px] text-slate-700 leading-relaxed pl-8.5">
-            Higher potential energy (E<sub>p</sub>) due to elevated position. Kinetic energy (E<sub>k</sub>) drops as the ball climbs the undulating track.
+          <p class="text-xs text-slate-700 leading-relaxed pl-8">
+            As the ball moves higher, its potential energy increases and its kinetic energy decreases.
           </p>
         </div>
 
-        <div class="rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 p-4 sm:p-5 space-y-2 shadow-xs hover:shadow-md transition">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black shadow-xs">2</span>
-            <h4 class="font-extrabold text-emerald-900 text-sm">Ground Valleys (B, D, F)</h4>
+        <!-- Phase 2: Ground Valleys (B, D, F) -->
+        <div class="rounded-2xl border-2 border-emerald-200 bg-emerald-50/50 p-4 space-y-1.5 shadow-xs hover:shadow-md transition">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black shadow-xs">
+              2
+            </span>
+            <h4 class="font-extrabold text-emerald-900 text-xs sm:text-sm">
+              Ground Valleys (B, D, F)
+            </h4>
           </div>
-          <p class="text-xs sm:text-[13px] text-slate-700 leading-relaxed pl-8.5">
-            Zero potential energy (<span class="font-mono font-bold text-emerald-800">h = 0 &rarr; E<sub>p</sub> = 0 J</span>). All energy is 100% kinetic (E<sub>k</sub> = Total Energy).
+          <p class="text-xs text-slate-700 leading-relaxed pl-8">
+            Zero potential energy (<span class="font-mono font-bold text-emerald-800">h = 0</span>). All energy is 100% kinetic, yielding maximum mechanical energy conversion.
           </p>
         </div>
 
-        <div class="rounded-2xl border-2 border-purple-200 bg-purple-50/50 p-4 sm:p-5 space-y-2 shadow-xs hover:shadow-md transition">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-black shadow-xs">3</span>
-            <h4 class="font-extrabold text-purple-900 text-sm">Continuous Reciprocal Exchange</h4>
+        <!-- Phase 3: Continuous Reciprocal Exchange -->
+        <div class="rounded-2xl border-2 border-purple-200 bg-purple-50/50 p-4 space-y-1.5 shadow-xs hover:shadow-md transition">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-black shadow-xs">
+              3
+            </span>
+            <h4 class="font-extrabold text-purple-900 text-xs sm:text-sm">
+              Continuous Reciprocal Exchange
+            </h4>
           </div>
-          <p class="text-xs sm:text-[13px] text-slate-700 leading-relaxed pl-8.5">
-            Energy seamlessly flows between potential and kinetic forms back and forth without any total loss: E<sub>p</sub> + E<sub>k</sub> = 100%.
+          <p class="text-xs text-slate-700 leading-relaxed pl-8">
+            Energy changes between potential and kinetic energy, but no energy is lost: Ep + Ek = 100%.
           </p>
         </div>
+
       </div>
 
     </div>
 
     <!-- ================================================================= -->
-    <!-- TAB 3: CALCULATOR (NO GRAVITY BUTTONS, PURELY Ep, Ek & TOTAL)     -->
+    <!-- TAB 3: CALCULATOR (GROUPED INTO POSITION 1, 2, AND 3)             -->
     <!-- ================================================================= -->
     <div id="viewCalculator" class="tab-pane space-y-6">
       
-      <div class="studio-card rounded-2xl p-6 sm:p-8 space-y-6 bg-gradient-to-br from-white via-slate-50 to-amber-50/20">
+      <div class="studio-card rounded-2xl p-6 sm:p-8 space-y-6 bg-gradient-to-br from-white via-slate-50 to-amber-50/20 border border-slate-200 shadow-xs">
         
         <div class="border-b border-slate-200 pb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -704,332 +721,310 @@
               Conservation of Energy Calculations
             </h2>
             <p class="text-xs text-slate-500">
-              Clean mathematical breakdown arranged neatly by energy rows (E<sub>p</sub>, E<sub>k</sub>, Total Energy).
+              Structured into Position 1 (A–B), Position 2 (C–D), and Position 3 (E–F) focusing purely on E<sub>p</sub>, E<sub>k</sub>, and Total Energy.
             </p>
           </div>
 
           <div class="flex items-center gap-2">
             <span class="text-xs font-mono font-bold bg-white text-slate-700 px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
-              SI Standard &bull; Earth Gravity g = 9.81 m/s² (Fixed)
+              Fixed Gravity: g = 9.81 m/s²
             </span>
           </div>
         </div>
 
-        <!-- ROW-BY-ROW ENERGY BREAKDOWN TABLE -->
-        <div class="space-y-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-2 text-xs font-bold text-slate-500">
-            <span class="text-slate-800 font-extrabold uppercase tracking-wider">Energy Category &amp; Formula</span>
-            <span class="hidden sm:inline font-mono text-[11px] text-slate-400">Values update in real-time</span>
+        <!-- 3-POSITION GROUPED ENERGY BREAKDOWN MATRIX -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2 text-xs font-bold text-slate-500">
+            <span class="text-slate-900 font-extrabold uppercase tracking-wider flex items-center gap-2">
+              <span>📊</span> Energy Distribution Grouped by Key Position Intervals
+            </span>
+            <span class="font-mono text-[11px] text-slate-400">P.E + K.E = 100% Constant</span>
           </div>
 
-          <!-- ROW 1: POTENTIAL ENERGY (Ep) -->
-          <div class="rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50/90 via-sky-50/40 to-blue-50/80 p-4 transition hover:border-blue-300 shadow-2xs">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
-              <div class="lg:col-span-3 space-y-1">
+          <!-- Position Columns: Position 1 (A-B), Position 2 (C-D), Position 3 (E-F) -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            <!-- POSITION 1: A - B (Dark Red / Rose Border) -->
+            <div class="rounded-2xl border-3 border-rose-600 bg-gradient-to-b from-rose-50/50 to-white p-4 space-y-3 shadow-sm">
+              <div class="flex items-center justify-between border-b border-rose-200 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="w-3.5 h-3.5 rounded-full bg-blue-600 shadow-xs"></span>
-                  <h4 class="font-extrabold text-blue-950 text-sm">Potential Energy (E<sub>p</sub>)</h4>
+                  <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center font-black text-xs">1</span>
+                  <h3 class="font-black text-rose-950 text-sm">Position 1 (A – B)</h3>
                 </div>
-                <div class="inline-block font-mono text-[11px] font-bold text-blue-800 bg-white px-2 py-0.5 rounded border border-blue-200">
-                  Formula: E<sub>p</sub> = m &times; g &times; h
-                </div>
+                <span class="text-[10px] font-mono bg-rose-100 text-rose-800 px-2 py-0.5 rounded-md font-bold">h₁=<span class="calcValH1">6.0</span>m &rarr; 0m</span>
               </div>
 
-              <div class="lg:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div class="bg-white p-2.5 rounded-xl border border-blue-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Summit A (h₁=<span class="calcValH1">6.0</span>m)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-blue-700">100.0%</strong>
-                    <span id="rowPeA" class="text-xs font-mono font-bold text-slate-800">117.72 J</span>
+              <!-- Energy Rows in Position 1 -->
+              <div class="space-y-2 text-xs font-mono">
+                <!-- Potential Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-rose-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Potential Energy (E<sub>p</sub> = mgh)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Summit A:</span>
+                    <span class="font-black text-blue-700">100.0% (<span class="rowTotalVal">117.72 J</span>)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Valley B (h=0):</span>
+                    <span class="font-bold text-slate-400">0.0% (0.00 J)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-blue-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Valleys (h=0)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-bold text-slate-400">0.0%</strong>
-                    <span class="text-xs font-mono font-bold text-slate-500">0.00 J</span>
+                <!-- Kinetic Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-emerald-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Kinetic Energy (E<sub>k</sub>)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Summit A (v=0):</span>
+                    <span class="font-bold text-slate-400">0.0% (0.00 J)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Valley B (Max):</span>
+                    <span class="font-black text-emerald-700">100.0% (<span class="rowTotalVal">117.72 J</span>)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-blue-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest C (h₂=<span class="calcValH2">3.8</span>m)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong id="rowPeCPct" class="text-xs font-mono font-black text-blue-700">63.3%</strong>
-                    <span id="rowPeCJoule" class="text-xs font-mono font-bold text-slate-800">74.56 J</span>
-                  </div>
-                </div>
-
-                <div class="bg-white p-2.5 rounded-xl border border-blue-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest E (h₃=<span class="calcValH3">1.8</span>m)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong id="rowPeEPct" class="text-xs font-mono font-black text-blue-700">30.0%</strong>
-                    <span id="rowPeEJoule" class="text-xs font-mono font-bold text-slate-800">35.32 J</span>
-                  </div>
+                <!-- Total Mechanical Energy -->
+                <div class="bg-amber-50/70 p-2.5 rounded-xl border border-amber-300 flex justify-between items-center">
+                  <span class="text-amber-950 font-bold text-[11px]">Total Energy:</span>
+                  <span class="font-black text-amber-800 text-xs">100% (<span class="rowTotalVal">117.72 J</span>)</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- ROW 2: KINETIC ENERGY (Ek) -->
-          <div class="rounded-2xl border-2 border-emerald-200 bg-gradient-to-r from-emerald-50/90 via-teal-50/40 to-emerald-50/80 p-4 transition hover:border-emerald-300 shadow-2xs">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
-              <div class="lg:col-span-3 space-y-1">
+            <!-- POSITION 2: C - D (Bright Red / Violet Border) -->
+            <div class="rounded-2xl border-3 border-purple-600 bg-gradient-to-b from-purple-50/50 to-white p-4 space-y-3 shadow-sm">
+              <div class="flex items-center justify-between border-b border-purple-200 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="w-3.5 h-3.5 rounded-full bg-emerald-600 shadow-xs"></span>
-                  <h4 class="font-extrabold text-emerald-950 text-sm">Kinetic Energy (E<sub>k</sub>)</h4>
+                  <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center font-black text-xs">2</span>
+                  <h3 class="font-black text-purple-950 text-sm">Position 2 (C – D)</h3>
                 </div>
-                <div class="inline-block font-mono text-[11px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-200">
-                  Formula: E<sub>k</sub> = Total Energy &minus; E<sub>p</sub>
-                </div>
+                <span class="text-[10px] font-mono bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md font-bold">h₂=<span class="calcValH2">3.8</span>m &rarr; 0m</span>
               </div>
 
-              <div class="lg:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div class="bg-white p-2.5 rounded-xl border border-emerald-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Summit A (At Rest)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-bold text-slate-400">0.0%</strong>
-                    <span class="text-xs font-mono font-bold text-slate-500">0.00 J</span>
+              <!-- Energy Rows in Position 2 -->
+              <div class="space-y-2 text-xs font-mono">
+                <!-- Potential Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-purple-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Potential Energy (E<sub>p</sub> = mgh)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">crest C (h₂):</span>
+                    <span id="pos2_peC" class="font-black text-blue-700">63.3% (74.56 J)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Valley D (h=0):</span>
+                    <span class="font-bold text-slate-400">0.0% (0.00 J)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-emerald-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Valleys (h = 0)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-emerald-700">100.0%</strong>
-                    <span id="rowKeValley" class="text-xs font-mono font-bold text-slate-800">117.72 J</span>
+                <!-- Kinetic Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-emerald-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Kinetic Energy (E<sub>k</sub>)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">crest C:</span>
+                    <span id="pos2_keC" class="font-black text-emerald-700">36.7% (43.16 J)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Valley D (Max):</span>
+                    <span class="font-black text-emerald-700">100.0% (<span class="rowTotalVal">117.72 J</span>)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-emerald-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest C</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong id="rowKeCPct" class="text-xs font-mono font-black text-emerald-700">36.7%</strong>
-                    <span id="rowKeCJoule" class="text-xs font-mono font-bold text-slate-800">43.16 J</span>
-                  </div>
-                </div>
-
-                <div class="bg-white p-2.5 rounded-xl border border-emerald-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest E</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong id="rowKeEPct" class="text-xs font-mono font-black text-emerald-700">70.0%</strong>
-                    <span id="rowKeEJoule" class="text-xs font-mono font-bold text-slate-800">82.40 J</span>
-                  </div>
+                <!-- Total Mechanical Energy -->
+                <div class="bg-amber-50/70 p-2.5 rounded-xl border border-amber-300 flex justify-between items-center">
+                  <span class="text-amber-950 font-bold text-[11px]">Total Energy:</span>
+                  <span class="font-black text-amber-800 text-xs">100% (<span class="rowTotalVal">117.72 J</span>)</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- ROW 3: TOTAL MECHANICAL ENERGY -->
-          <div class="rounded-2xl border-2 border-amber-300 bg-gradient-to-r from-amber-50/90 via-orange-50/40 to-amber-50/80 p-4 transition hover:border-amber-400 shadow-2xs">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
-              <div class="lg:col-span-3 space-y-1">
+            <!-- POSITION 3: E - F (Cyan / Amber Border) -->
+            <div class="rounded-2xl border-3 border-amber-500 bg-gradient-to-b from-amber-50/50 to-white p-4 space-y-3 shadow-sm">
+              <div class="flex items-center justify-between border-b border-amber-200 pb-2">
                 <div class="flex items-center gap-2">
-                  <span class="w-3.5 h-3.5 rounded-full bg-amber-500 shadow-xs"></span>
-                  <h4 class="font-extrabold text-amber-950 text-sm">Total Energy (E<sub>p</sub> + E<sub>k</sub>)</h4>
+                  <span class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center font-black text-xs">3</span>
+                  <h3 class="font-black text-amber-950 text-sm">Position 3 (E – F)</h3>
                 </div>
-                <div class="inline-block font-mono text-[11px] font-bold text-amber-800 bg-white px-2 py-0.5 rounded border border-amber-200">
-                  Formula: E<sub>p</sub> + E<sub>k</sub> = Constant
-                </div>
+                <span class="text-[10px] font-mono bg-amber-100 text-amber-800 px-2 py-0.5 rounded-md font-bold">h₃=<span class="calcValH3">1.8</span>m &rarr; 0m</span>
               </div>
 
-              <div class="lg:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Summit A</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-amber-700">100%</strong>
-                    <span class="rowTotalVal text-xs font-mono font-bold text-slate-900">117.72 J</span>
+              <!-- Energy Rows in Position 3 -->
+              <div class="space-y-2 text-xs font-mono">
+                <!-- Potential Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-amber-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Potential Energy (E<sub>p</sub> = mgh)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">crest E (h₃):</span>
+                    <span id="pos3_peE" class="font-black text-blue-700">30.0% (35.32 J)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Bottom F (h=0):</span>
+                    <span class="font-bold text-slate-400">0.0% (0.00 J)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Valleys (B, D, F)</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-amber-700">100%</strong>
-                    <span class="rowTotalVal text-xs font-mono font-bold text-slate-900">117.72 J</span>
+                <!-- Kinetic Energy -->
+                <div class="bg-white p-2.5 rounded-xl border border-emerald-200 space-y-1 shadow-2xs">
+                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Kinetic Energy (E<sub>k</sub>)</span>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">crest E:</span>
+                    <span id="pos3_keE" class="font-black text-emerald-700">70.0% (82.40 J)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-slate-600">Bottom F (Max):</span>
+                    <span class="font-black text-emerald-700">100.0% (<span class="rowTotalVal">117.72 J</span>)</span>
                   </div>
                 </div>
 
-                <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest C</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-amber-700">100%</strong>
-                    <span class="rowTotalVal text-xs font-mono font-bold text-slate-900">117.72 J</span>
-                  </div>
-                </div>
-
-                <div class="bg-white p-2.5 rounded-xl border border-amber-100 shadow-2xs space-y-0.5">
-                  <span class="text-[10px] font-bold text-slate-500 uppercase block">Crest E</span>
-                  <div class="flex items-baseline justify-between">
-                    <strong class="text-xs font-mono font-black text-amber-700">100%</strong>
-                    <span class="rowTotalVal text-xs font-mono font-bold text-slate-900">117.72 J</span>
-                  </div>
+                <!-- Total Mechanical Energy -->
+                <div class="bg-amber-50/70 p-2.5 rounded-xl border border-amber-300 flex justify-between items-center">
+                  <span class="text-amber-950 font-bold text-[11px]">Total Energy:</span>
+                  <span class="font-black text-amber-800 text-xs">100% (<span class="rowTotalVal">117.72 J</span>)</span>
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
 
-        <!-- Two Columns: Clean Input Steppers (Left) & Spaced-Out Derivation Steps (Right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
-          <!-- Left Column: Parameters Card (5 cols) - NO GRAVITY BUTTONS -->
-          <div class="lg:col-span-5 space-y-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
-              <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span>⚙️</span> Variables &amp; Inputs
-              </h3>
-              <span class="text-[10px] text-emerald-700 font-mono font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                g = 9.81 m/s² (Earth)
-              </span>
-            </div>
+        <!-- Variables & Parameters (Fixed Gravity, Clean Steppers) -->
+        <div class="space-y-3 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+              <span>⚙️</span> Variables &amp; Parameters
+            </h3>
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              g = 9.81 m/s² (Earth)
+            </span>
+          </div>
 
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            
             <!-- Mass Input -->
-            <div class="space-y-1.5">
+            <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
                 <label class="text-rose-900">Mass (m):</label>
-                <span id="dispCalcM" class="font-mono text-rose-700 font-bold">2.0 kg</span>
+                <span id="dispCalcM" class="font-mono text-rose-700">2.0 kg</span>
               </div>
-              <div class="flex items-center gap-2">
-                <button type="button" onclick="stepParam('m', -0.2)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-rose-50 text-rose-800 font-bold border border-slate-200 transition shadow-2xs">▼</button>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="stepParam('m', -0.2)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-rose-50 text-rose-800 font-bold border border-slate-200 shadow-2xs transition">▼</button>
                 <div class="relative flex-1">
-                  <input id="calc_m" type="number" step="0.1" min="0.1" max="50" value="2.0" oninput="onInputBoxChange('m', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-rose-500 font-mono font-bold focus:outline-none">
-                  <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-mono">kg</span>
+                  <input id="calc_m" type="number" step="0.1" min="0.1" max="50" value="2.0" oninput="onInputBoxChange('m', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-lg px-2.5 py-1.5 pr-8 focus:ring-2 focus:ring-rose-500 font-mono font-bold outline-none">
+                  <span class="absolute right-2 top-2 text-[10px] text-slate-400 font-mono">kg</span>
                 </div>
-                <button type="button" onclick="stepParam('m', 0.2)" class="w-10 h-10 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold transition shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('m', 0.2)" class="w-8 h-8 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-bold shadow-2xs transition">▲</button>
               </div>
             </div>
 
-            <!-- Height 1 Input -->
-            <div class="space-y-1.5">
+            <!-- Summit A Height -->
+            <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
-                <label class="text-sky-900">Summit A Height (h₁):</label>
-                <span id="dispCalcH1" class="font-mono text-sky-700 font-bold">6.0 m</span>
+                <label class="text-sky-900">Summit A (h₁):</label>
+                <span id="dispCalcH1" class="font-mono text-sky-700">6.0 m</span>
               </div>
-              <div class="flex items-center gap-2">
-                <button type="button" onclick="stepParam('h1', -0.5)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-sky-50 text-sky-800 font-bold border border-slate-200 transition shadow-2xs">▼</button>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="stepParam('h1', -0.5)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-sky-50 text-sky-800 font-bold border border-slate-200 shadow-2xs transition">▼</button>
                 <div class="relative flex-1">
-                  <input id="calc_h1" type="number" step="0.1" min="2.0" max="30" value="6.0" oninput="onInputBoxChange('h1', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-sky-500 font-mono font-bold focus:outline-none">
-                  <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-mono">m</span>
+                  <input id="calc_h1" type="number" step="0.1" min="2.0" max="30" value="6.0" oninput="onInputBoxChange('h1', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-lg px-2.5 py-1.5 pr-8 focus:ring-2 focus:ring-sky-500 font-mono font-bold outline-none">
+                  <span class="absolute right-2 top-2 text-[10px] text-slate-400 font-mono">m</span>
                 </div>
-                <button type="button" onclick="stepParam('h1', 0.5)" class="w-10 h-10 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold transition shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h1', 0.5)" class="w-8 h-8 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-bold shadow-2xs transition">▲</button>
               </div>
             </div>
 
-            <!-- Height 2 Input -->
-            <div class="space-y-1.5">
+            <!-- crest C Height -->
+            <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
-                <label class="text-purple-900">Mid Crest C Height (h₂):</label>
-                <span id="dispCalcH2" class="font-mono text-purple-700 font-bold">3.8 m</span>
+                <label class="text-purple-900">crest C (h₂):</label>
+                <span id="dispCalcH2" class="font-mono text-purple-700">3.8 m</span>
               </div>
-              <div class="flex items-center gap-2">
-                <button type="button" onclick="stepParam('h2', -0.2)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-purple-50 text-purple-800 font-bold border border-slate-200 transition shadow-2xs">▼</button>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="stepParam('h2', -0.2)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-purple-50 text-purple-800 font-bold border border-slate-200 shadow-2xs transition">▼</button>
                 <div class="relative flex-1">
-                  <input id="calc_h2" type="number" step="0.1" min="0.5" max="25" value="3.8" oninput="onInputBoxChange('h2', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-purple-500 font-mono font-bold focus:outline-none">
-                  <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-mono">m</span>
+                  <input id="calc_h2" type="number" step="0.1" min="0.5" max="25" value="3.8" oninput="onInputBoxChange('h2', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-lg px-2.5 py-1.5 pr-8 focus:ring-2 focus:ring-purple-500 font-mono font-bold outline-none">
+                  <span class="absolute right-2 top-2 text-[10px] text-slate-400 font-mono">m</span>
                 </div>
-                <button type="button" onclick="stepParam('h2', 0.2)" class="w-10 h-10 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h2', 0.2)" class="w-8 h-8 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-2xs transition">▲</button>
               </div>
             </div>
 
-            <!-- Height 3 Input -->
-            <div class="space-y-1.5">
+            <!-- crest E Height -->
+            <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
-                <label class="text-amber-900">Lower Crest E Height (h₃):</label>
-                <span id="dispCalcH3" class="font-mono text-amber-700 font-bold">1.8 m</span>
+                <label class="text-amber-900">crest E (h₃):</label>
+                <span id="dispCalcH3" class="font-mono text-amber-700">1.8 m</span>
               </div>
-              <div class="flex items-center gap-2">
-                <button type="button" onclick="stepParam('h3', -0.2)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-amber-50 text-amber-800 font-bold border border-slate-200 transition shadow-2xs">▼</button>
+              <div class="flex items-center gap-1.5">
+                <button type="button" onclick="stepParam('h3', -0.2)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-amber-50 text-amber-800 font-bold border border-slate-200 shadow-2xs transition">▼</button>
                 <div class="relative flex-1">
-                  <input id="calc_h3" type="number" step="0.1" min="0.2" max="20" value="1.8" oninput="onInputBoxChange('h3', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-amber-500 font-mono font-bold focus:outline-none">
-                  <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-mono">m</span>
+                  <input id="calc_h3" type="number" step="0.1" min="0.2" max="20" value="1.8" oninput="onInputBoxChange('h3', this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-lg px-2.5 py-1.5 pr-8 focus:ring-2 focus:ring-amber-500 font-mono font-bold outline-none">
+                  <span class="absolute right-2 top-2 text-[10px] text-slate-400 font-mono">m</span>
                 </div>
-                <button type="button" onclick="stepParam('h3', 0.2)" class="w-10 h-10 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold transition shadow-2xs">▲</button>
+                <button type="button" onclick="stepParam('h3', 0.2)" class="w-8 h-8 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold shadow-2xs transition">▲</button>
               </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- STEP-BY-STEP DERIVATIONS STRICTLY FOCUSED ON Ep, Ek, AND TOTAL ENERGY -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+              <span>📋</span> Energy Conservation Derivations (E<sub>p</sub> &amp; E<sub>k</sub>)
+            </h3>
+            <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              E<sub>p</sub> + E<sub>k</sub> = 100% Invariant
+            </span>
+          </div>
+
+          <!-- Step 1 Card: Position 1 (A-B) -->
+          <div class="bg-white rounded-2xl border-2 border-rose-200 p-4 space-y-2 shadow-sm transition hover:border-rose-300">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-rose-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-mono font-black">1</span>
+                Position 1 (A – B): Total Initial Energy &amp; Valley Conversion
+              </span>
+              <span class="text-[10px] font-mono bg-rose-50 text-rose-700 px-2 py-0.5 rounded border border-rose-200 font-bold">h₁ = <span class="calcValH1">6.0</span>m</span>
+            </div>
+            <p class="text-xs text-slate-600">
+              At rest on Summit A (E<sub>k</sub> = 0 J), all energy is gravitational potential. At Valley B (h = 0), all energy is kinetic:
+            </p>
+            <div id="step1Calc" class="bg-rose-50/70 p-3 rounded-xl border border-rose-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
+              E<sub>p(A)</sub> = 2.0 kg &times; 9.81 m/s² &times; 6.0 m = 117.72 J &bull; E<sub>k(A)</sub> = 0 J &rarr; Total Energy = 100% (117.72 J)
             </div>
           </div>
 
-          <!-- Right Column: Purely Ep, Ek, and Total Energy Derivations (7 cols) -->
-          <div class="lg:col-span-7 space-y-4">
-            
+          <!-- Step 2 Card: Position 2 (C-D) -->
+          <div class="bg-white rounded-2xl border-2 border-purple-200 p-4 space-y-2 shadow-sm transition hover:border-purple-300">
             <div class="flex items-center justify-between">
-              <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span>📋</span> Energy Conservation Derivations (E<sub>p</sub> &amp; E<sub>k</sub>)
-              </h3>
-              <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                E<sub>p</sub> + E<sub>k</sub> = 100% Invariant
+              <span class="text-xs font-extrabold text-purple-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-mono font-black">2</span>
+                Position 2 (C – D): Intermediate Energy Sharing &amp; Valley Recovery
               </span>
+              <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-200 font-bold">h₂ = <span class="calcValH2">3.8</span>m</span>
             </div>
-
-            <!-- Step 1 Card -->
-            <div class="bg-white rounded-2xl border-2 border-sky-200 p-4 space-y-2 shadow-sm transition hover:border-sky-300">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold text-sky-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full bg-sky-600 text-white flex items-center justify-center text-xs font-mono font-black">1</span>
-                  Summit A: Total Initial Mechanical Energy
-                </span>
-                <span class="text-[10px] font-mono bg-sky-50 text-sky-700 px-2 py-0.5 rounded border border-sky-200 font-bold">h₁ = <span class="calcValH1">6.0</span>m</span>
-              </div>
-              <p class="text-xs text-slate-600">
-                At rest on summit (<span class="font-mono font-bold text-slate-800">E<sub>k</sub> = 0 J</span>), all energy is purely gravitational potential:
-              </p>
-              <div id="step1Calc" class="bg-sky-50/70 p-3 rounded-xl border border-sky-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
-                E<sub>p(A)</sub> = m &times; g &times; h₁ = 117.72 J &bull; E<sub>k(A)</sub> = 0 J &rarr; Total Energy = 117.72 J (100%)
-              </div>
+            <p class="text-xs text-slate-600">
+              At crest C, mechanical energy is partitioned between E<sub>p</sub> and E<sub>k</sub>:
+            </p>
+            <div id="step2Calc" class="bg-purple-50/70 p-3 rounded-xl border border-purple-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
+              E<sub>p(C)</sub> = m &times; g &times; h₂ &rarr; E<sub>p(C)</sub> (63.3%) + E<sub>k(C)</sub> (36.7%) = 100% (117.72 J)
             </div>
+          </div>
 
-            <!-- Step 2 Card -->
-            <div class="bg-white rounded-2xl border-2 border-emerald-200 p-4 space-y-2 shadow-sm transition hover:border-emerald-300">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold text-emerald-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-mono font-black">2</span>
-                  Valleys B, D &amp; F: Maximum Kinetic Energy
-                </span>
-                <span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200 font-bold">h = 0</span>
-              </div>
-              <p class="text-xs text-slate-600">
-                At the ground datum (<span class="font-mono font-bold text-slate-800">E<sub>p</sub> = 0 J</span>), potential energy is fully converted into kinetic:
-              </p>
-              <div id="step2Calc" class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
-                E<sub>p</sub> = 0 J &rarr; E<sub>k</sub> = Total Energy = 117.72 J (100%) &rarr; E<sub>p</sub> (0%) + E<sub>k</sub> (100%) = 100%
-              </div>
+          <!-- Step 3 Card: Position 3 (E-F) -->
+          <div class="bg-white rounded-2xl border-2 border-amber-200 p-4 space-y-2 shadow-sm transition hover:border-amber-300">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-amber-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-mono font-black">3</span>
+                Position 3 (E – F): Low crest Balance &amp; Final Ground Level
+              </span>
+              <span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200 font-bold">h₃ = <span class="calcValH3">1.8</span>m</span>
             </div>
-
-            <!-- Step 3 Card -->
-            <div class="bg-white rounded-2xl border-2 border-purple-200 p-4 space-y-2 shadow-sm transition hover:border-purple-300">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold text-purple-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-mono font-black">3</span>
-                  Mid Crest C: Intermediate Energy Sharing
-                </span>
-                <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-200 font-bold">h₂ = <span class="calcValH2">3.8</span>m</span>
-              </div>
-              <p class="text-xs text-slate-600">
-                Energy is shared between potential and kinetic forms at elevation h₂:
-              </p>
-              <div id="step3Calc" class="bg-purple-50/70 p-3 rounded-xl border border-purple-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
-                E<sub>p(C)</sub> = 74.56 J (63.3%) &bull; E<sub>k(C)</sub> = Total &minus; E<sub>p(C)</sub> = 43.16 J (36.7%) &rarr; Total = 100%
-              </div>
+            <p class="text-xs text-slate-600">
+              Over crest E, high kinetic energy is retained before dropping to Bottom F (100% E<sub>k</sub>):
+            </p>
+            <div id="step3Calc" class="bg-amber-50/70 p-3 rounded-xl border border-amber-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
+              E<sub>p(E)</sub> = m &times; g &times; h₃ &rarr; E<sub>p(E)</sub> (30.0%) + E<sub>k(E)</sub> (70.0%) = 100% (117.72 J)
             </div>
-
-            <!-- Step 4 Card -->
-            <div class="bg-white rounded-2xl border-2 border-amber-200 p-4 space-y-2 shadow-sm transition hover:border-amber-300">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold text-amber-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-mono font-black">4</span>
-                  Lower Crest E: Low Crest Energy Sharing
-                </span>
-                <span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200 font-bold">h₃ = <span class="calcValH3">1.8</span>m</span>
-              </div>
-              <p class="text-xs text-slate-600">
-                Lower elevation retains higher kinetic energy:
-              </p>
-              <div id="step4Calc" class="bg-amber-50/70 p-3 rounded-xl border border-amber-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
-                E<sub>p(E)</sub> = 35.32 J (30.0%) &bull; E<sub>k(E)</sub> = Total &minus; E<sub>p(E)</sub> = 82.40 J (70.0%) &rarr; Total = 100%
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -1041,10 +1036,10 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500 mt-auto">
+  <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500 mt-auto select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
       <p class="font-medium text-slate-700">Principle of Conservation of Energy &bull; E<sub>p</sub> + E<sub>k</sub> = Total Energy (100% Constant)</p>
-      <p class="text-slate-400 font-mono text-[11px]">Points A &rarr; B &rarr; C &rarr; D &rarr; E &rarr; F &bull; Interactive Physics Lab</p>
+      <p class="text-slate-400 font-mono text-[11px]">Protected Interactive Physics Simulator &bull; All Rights Reserved</p>
     </div>
   </footer>
 
@@ -1057,11 +1052,81 @@
   </div>
 
   <script>
+    // =========================================================================
+    // SECURITY & ANTI-DUPLICATION PROTECTION MODULE
+    // =========================================================================
+    (function initSecurityGuard() {
+      // 1. Disable Right-Click Context Menu
+      document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'INPUT') return; // Allow normal input interaction
+        e.preventDefault();
+        showToast('Right-click is disabled to protect intellectual property.', '🔒');
+      });
+
+      // 2. Prevent Developer Tools & Source Extraction Keyboard Shortcuts
+      document.addEventListener('keydown', (e) => {
+        // F12 Developer Tools
+        if (e.key === 'F12') {
+          e.preventDefault();
+          showToast('Developer inspection tools are restricted.', '🛡️');
+          return;
+        }
+
+        const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+        // Ctrl/Cmd + Shift + I / J / C (Inspect Element / Console)
+        if (isCtrlOrCmd && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) {
+          e.preventDefault();
+          showToast('Source inspection is restricted.', '🛡️');
+          return;
+        }
+
+        // Ctrl/Cmd + U (View Source)
+        if (isCtrlOrCmd && (e.key === 'u' || e.key === 'U')) {
+          e.preventDefault();
+          showToast('Viewing page source is disabled.', '🛡️');
+          return;
+        }
+
+        // Ctrl/Cmd + S (Save Webpage)
+        if (isCtrlOrCmd && (e.key === 's' || e.key === 'S')) {
+          e.preventDefault();
+          showToast('Saving local copies is disabled.', '🛡️');
+          return;
+        }
+
+        // Ctrl/Cmd + P (Print / Save PDF)
+        if (isCtrlOrCmd && (e.key === 'p' || e.key === 'P')) {
+          e.preventDefault();
+          showToast('Direct printing is disabled to protect layout integrity.', '🛡️');
+          return;
+        }
+      });
+
+      // 3. Prevent dragging of non-input graphics/text
+      document.addEventListener('dragstart', (e) => {
+        if (e.target.tagName !== 'INPUT') {
+          e.preventDefault();
+        }
+      });
+
+      // 4. Console Watermark Notice
+      console.clear();
+      console.log(
+        '%c🔒 INTELLECTUAL PROPERTY & SECURITY NOTICE\n' +
+        '%c© Principle of Conservation of Energy Interactive Laboratory.\n' +
+        'All mathematical models, layout architecture, and visual representations are protected.\n' +
+        'Unauthorized copying, reverse-engineering, or commercial duplication is strictly prohibited.',
+        'color: #dc2626; font-size: 14px; font-weight: 900; background: #fee2e2; padding: 6px 12px; border-radius: 6px; border: 1px solid #f87171;',
+        'color: #1e40af; font-size: 11px; font-weight: 600; line-height: 1.6;'
+      );
+    })();
+
     // Global simulation & calculation state
     const state = {
       t: 0.0, // Progress along track: 0.0 (Point A) to 1.0 (Point F)
       animating: false,
-      g: 9.81, // Earth gravity fixed strictly at 9.81 m/s²
+      g: 9.81, // Earth gravity standard
       m: 2.0,
       h1: 6.0,
       h2: 3.8,
@@ -1070,208 +1135,14 @@
       activeHandle: null,
       hoverHandle: null,
       isDragging: false,
-      currentView: 'fundamentals', // Initial tab is Fundamentals
-      peTarget: 'ep', // 'ep' | 'h' | 'm'
-      keTarget: 'ek'  // 'ek' | 'v' | 'm'
+      currentView: 'theory'
     };
-
-    // Target Switchers for Potential Energy Solver in Tab 1
-    function setPeTarget(target) {
-      state.peTarget = target;
-      const btns = {
-        'ep': document.getElementById('btnTargetPe_ep'),
-        'h': document.getElementById('btnTargetPe_h'),
-        'm': document.getElementById('btnTargetPe_m')
-      };
-
-      Object.keys(btns).forEach(k => {
-        if (!btns[k]) return;
-        if (k === target) {
-          btns[k].className = 'px-2.5 py-1 rounded-lg bg-orange-500 text-white font-black shadow-xs transition';
-        } else {
-          btns[k].className = 'px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition';
-        }
-      });
-
-      const inEp = document.getElementById('inPe_ep');
-      const inM = document.getElementById('inPe_m');
-      const inH = document.getElementById('inPe_h');
-
-      if (inEp && inM && inH) {
-        inEp.disabled = (target === 'ep');
-        inM.disabled = (target === 'm');
-        inH.disabled = (target === 'h');
-      }
-
-      calcPeMatrix();
-    }
-
-    function calcPeMatrix() {
-      const g = 9.81;
-      const target = state.peTarget;
-      const inEpEl = document.getElementById('inPe_ep');
-      const inMEl = document.getElementById('inPe_m');
-      const inHEl = document.getElementById('inPe_h');
-
-      if (!inEpEl || !inMEl || !inHEl) return;
-
-      let epVal = parseFloat(inEpEl.value) || 0;
-      let mVal = parseFloat(inMEl.value) || 0.01;
-      let hVal = parseFloat(inHEl.value) || 0;
-
-      const outEpCell = document.getElementById('outPe_cell_ep');
-      const outMCell = document.getElementById('outPe_cell_m');
-      const outHCell = document.getElementById('outPe_cell_h');
-
-      const outEpVal = document.getElementById('outPe_val_ep');
-      const outMVal = document.getElementById('outPe_val_m');
-      const outHVal = document.getElementById('outPe_val_h');
-
-      const lblSolved = document.getElementById('lblPeSolvedFor');
-      const lblFormula = document.getElementById('lblPeFormulaApplied');
-      const stepsBox = document.getElementById('peStepsBox');
-
-      [outEpCell, outMCell, outHCell].forEach(c => {
-        if (c) c.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-white text-slate-400';
-      });
-      if (outHCell) outHCell.className = 'py-2 px-2 font-black text-sm bg-white text-slate-400';
-
-      if (target === 'ep') {
-        const ans = mVal * g * hVal;
-        inEpEl.value = ans.toFixed(2);
-        if (outEpVal) outEpVal.innerText = ans.toFixed(2);
-        if (outMVal) outMVal.innerText = '-';
-        if (outHVal) outHVal.innerText = '-';
-        if (outEpCell) outEpCell.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'POTENTIAL ENERGY';
-        if (lblFormula) lblFormula.innerHTML = '(E<sub>p</sub> = m &times; g &times; h)';
-        if (stepsBox) stepsBox.innerHTML = `E<sub>p</sub> = ${mVal.toFixed(2)} kg &times; 9.81 m/s² &times; ${hVal.toFixed(2)} m = <strong class="text-orange-600 font-black">${ans.toFixed(2)} J</strong>`;
-      } else if (target === 'h') {
-        const ans = (mVal * g > 0) ? epVal / (mVal * g) : 0;
-        inHEl.value = ans.toFixed(2);
-        if (outEpVal) outEpVal.innerText = '-';
-        if (outMVal) outMVal.innerText = '-';
-        if (outHVal) outHVal.innerText = ans.toFixed(2);
-        if (outHCell) outHCell.className = 'py-2 px-2 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'HEIGHT';
-        if (lblFormula) lblFormula.innerHTML = '(h = E<sub>p</sub> / [m &times; g])';
-        if (stepsBox) stepsBox.innerHTML = `h = ${epVal.toFixed(2)} J &divide; (${mVal.toFixed(2)} kg &times; 9.81 m/s²) = <strong class="text-orange-600 font-black">${ans.toFixed(2)} m</strong>`;
-      } else if (target === 'm') {
-        const ans = (g * hVal > 0) ? epVal / (g * hVal) : 0;
-        inMEl.value = ans.toFixed(2);
-        if (outEpVal) outEpVal.innerText = '-';
-        if (outMVal) outMVal.innerText = ans.toFixed(2);
-        if (outHVal) outHVal.innerText = '-';
-        if (outMCell) outMCell.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'MASS';
-        if (lblFormula) lblFormula.innerHTML = '(m = E<sub>p</sub> / [g &times; h])';
-        if (stepsBox) stepsBox.innerHTML = `m = ${epVal.toFixed(2)} J &divide; (9.81 m/s² &times; ${hVal.toFixed(2)} m) = <strong class="text-orange-600 font-black">${ans.toFixed(2)} kg</strong>`;
-      }
-    }
-
-    // Target Switchers for Kinetic Energy Solver in Tab 1
-    function setKeTarget(target) {
-      state.keTarget = target;
-      const btns = {
-        'ek': document.getElementById('btnTargetKe_ek'),
-        'v': document.getElementById('btnTargetKe_v'),
-        'm': document.getElementById('btnTargetKe_m')
-      };
-
-      Object.keys(btns).forEach(k => {
-        if (!btns[k]) return;
-        if (k === target) {
-          btns[k].className = 'px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-black shadow-xs transition';
-        } else {
-          btns[k].className = 'px-2.5 py-1 rounded-lg text-slate-700 hover:bg-white transition';
-        }
-      });
-
-      const inEk = document.getElementById('inKe_ek');
-      const inM = document.getElementById('inKe_m');
-      const inV = document.getElementById('inKe_v');
-
-      if (inEk && inM && inV) {
-        inEk.disabled = (target === 'ek');
-        inM.disabled = (target === 'm');
-        inV.disabled = (target === 'v');
-      }
-
-      calcKeMatrix();
-    }
-
-    function calcKeMatrix() {
-      const target = state.keTarget;
-      const inEkEl = document.getElementById('inKe_ek');
-      const inMEl = document.getElementById('inKe_m');
-      const inVEl = document.getElementById('inKe_v');
-
-      if (!inEkEl || !inMEl || !inVEl) return;
-
-      let ekVal = parseFloat(inEkEl.value) || 0;
-      let mVal = parseFloat(inMEl.value) || 0.001;
-      let vVal = parseFloat(inVEl.value) || 0;
-
-      const outEkCell = document.getElementById('outKe_cell_ek');
-      const outMCell = document.getElementById('outKe_cell_m');
-      const outVCell = document.getElementById('outKe_cell_v');
-
-      const outEkVal = document.getElementById('outKe_val_ek');
-      const outMVal = document.getElementById('outKe_val_m');
-      const outVVal = document.getElementById('outKe_val_v');
-
-      const lblSolved = document.getElementById('lblKeSolvedFor');
-      const lblFormula = document.getElementById('lblKeFormulaApplied');
-      const stepsBox = document.getElementById('keStepsBox');
-
-      [outEkCell, outMCell, outVCell].forEach(c => {
-        if (c) c.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-white text-slate-400';
-      });
-      if (outVCell) outVCell.className = 'py-2 px-2 font-black text-sm bg-white text-slate-400';
-
-      if (target === 'ek') {
-        const ans = 0.5 * mVal * Math.pow(vVal, 2);
-        inEkEl.value = (ans < 0.01 && ans > 0) ? ans.toFixed(4) : ans.toFixed(2);
-        if (outEkVal) outEkVal.innerText = inEkEl.value;
-        if (outMVal) outMVal.innerText = '-';
-        if (outVVal) outVVal.innerText = '-';
-        if (outEkCell) outEkCell.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'KINETIC ENERGY';
-        if (lblFormula) lblFormula.innerHTML = '(E<sub>k</sub> = &frac12;mv²)';
-        if (stepsBox) stepsBox.innerHTML = `E<sub>k</sub> = &frac12; &times; ${mVal.toFixed(3)} kg &times; (${vVal.toFixed(2)} m/s)² = <strong class="text-emerald-700 font-black">${inEkEl.value} J</strong>`;
-      } else if (target === 'v') {
-        const ans = (mVal > 0) ? Math.sqrt((2 * ekVal) / mVal) : 0;
-        inVEl.value = ans.toFixed(2);
-        if (outEkVal) outEkVal.innerText = '-';
-        if (outMVal) outMVal.innerText = '-';
-        if (outVVal) outVVal.innerText = ans.toFixed(2);
-        if (outVCell) outVCell.className = 'py-2 px-2 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'VELOCITY';
-        if (lblFormula) lblFormula.innerHTML = '(v = &radic;[2E<sub>k</sub> / m])';
-        if (stepsBox) stepsBox.innerHTML = `v = &radic;[2 &times; ${ekVal} J &divide; ${mVal.toFixed(3)} kg] = <strong class="text-emerald-700 font-black">${ans.toFixed(2)} m/s</strong>`;
-      } else if (target === 'm') {
-        const ans = (vVal > 0) ? (2 * ekVal) / Math.pow(vVal, 2) : 0;
-        inMEl.value = (ans < 0.01 && ans > 0) ? ans.toFixed(4) : ans.toFixed(3);
-        if (outEkVal) outEkVal.innerText = '-';
-        if (outMVal) outMVal.innerText = inMEl.value;
-        if (outVVal) outVVal.innerText = '-';
-        if (outMCell) outMCell.className = 'py-2 px-2 border-r-2 border-slate-700 font-black text-sm bg-[#cffafe] text-slate-900';
-
-        if (lblSolved) lblSolved.innerText = 'MASS';
-        if (lblFormula) lblFormula.innerHTML = '(m = 2E<sub>k</sub> / v²)';
-        if (stepsBox) stepsBox.innerHTML = `m = (2 &times; ${ekVal} J) &divide; (${vVal.toFixed(2)} m/s)² = <strong class="text-emerald-700 font-black">${inMEl.value} kg</strong>`;
-      }
-    }
 
     function showToast(msg, icon = 'ℹ️') {
       const box = document.getElementById('toast');
       const msgEl = document.getElementById('toastMsg');
       const iconEl = document.getElementById('toastIcon');
+      if (!box || !msgEl || !iconEl) return;
       msgEl.innerText = msg;
       iconEl.innerText = icon;
       box.classList.remove('translate-y-20', 'opacity-0');
@@ -1282,18 +1153,17 @@
       }, 1800);
     }
 
-    // STRICTLY 3 TABS: fundamentals, simulator, calculator
     function switchView(viewName) {
       state.currentView = viewName;
 
       const navTabs = {
-        'fundamentals': 'navTabFundamentals',
+        'theory': 'navTabTheory',
         'simulator': 'navTabSimulator',
         'calculator': 'navTabCalculator'
       };
 
       const colorMap = {
-        'fundamentals': 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-xs',
+        'theory': 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs',
         'simulator': 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs',
         'calculator': 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-xs'
       };
@@ -1308,7 +1178,7 @@
         }
       });
 
-      const panes = ['viewFundamentals', 'viewSimulator', 'viewCalculator'];
+      const panes = ['viewTheory', 'viewSimulator', 'viewCalculator'];
       panes.forEach(p => {
         const el = document.getElementById(p);
         if (el) el.classList.remove('active');
@@ -1373,7 +1243,6 @@
       state.h1 = 6.0;
       state.h2 = 3.8;
       state.h3 = 1.8;
-      state.g = 9.81; // Earth gravity is always fixed
       syncControlsUI();
       runCalculator();
       showToast('Parameters reset to default values.', '↺');
@@ -1421,118 +1290,200 @@
       if (dCalcH3) dCalcH3.innerText = `${state.h3.toFixed(1)} m`;
     }
 
+    // Dynamic calculator for Position 1, 2, and 3
     function runCalculator() {
       const m = state.m;
       const h1 = state.h1;
       const h2 = state.h2;
       const h3 = state.h3;
-      const g = 9.81; // Fixed Earth gravity
+      const g = state.g;
 
       document.querySelectorAll('.calcValH1').forEach(el => el.innerText = h1.toFixed(1));
       document.querySelectorAll('.calcValH2').forEach(el => el.innerText = h2.toFixed(1));
       document.querySelectorAll('.calcValH3').forEach(el => el.innerText = h3.toFixed(1));
 
-      // Percentages for positions C and E
+      const totalE = m * g * h1;
       const cPePct = ((h2 / h1) * 100).toFixed(1);
       const cKePct = (100 - cPePct).toFixed(1);
       const ePePct = ((h3 / h1) * 100).toFixed(1);
       const eKePct = (100 - ePePct).toFixed(1);
 
-      // Total Initial Mechanical Energy (Summit A)
-      const totalE = m * g * h1;
-
-      // Joules at positions C and E
       const peCJoules = (cPePct / 100) * totalE;
       const keCJoules = totalE - peCJoules;
       const peEJoules = (ePePct / 100) * totalE;
       const keEJoules = totalE - peEJoules;
 
-      // --- Position 1 (A - B) ---
-      const pos1_peA_pct = document.getElementById('pos1_peA_pct');
-      const pos1_peA_j = document.getElementById('pos1_peA_j');
-      const pos1_keA_pct = document.getElementById('pos1_keA_pct');
-      const pos1_keA_j = document.getElementById('pos1_keA_j');
-      const pos1_peB_pct = document.getElementById('pos1_peB_pct');
-      const pos1_peB_j = document.getElementById('pos1_peB_j');
-      const pos1_keB_pct = document.getElementById('pos1_keB_pct');
-      const pos1_keB_j = document.getElementById('pos1_keB_j');
-
-      if (pos1_peA_pct) pos1_peA_pct.innerText = '100.0%';
-      if (pos1_peA_j) pos1_peA_j.innerText = `${totalE.toFixed(2)} J`;
-      if (pos1_keA_pct) pos1_keA_pct.innerText = '0.0%';
-      if (pos1_keA_j) pos1_keA_j.innerText = '0.00 J';
-      if (pos1_peB_pct) pos1_peB_pct.innerText = '0.0%';
-      if (pos1_peB_j) pos1_peB_j.innerText = '0.00 J';
-      if (pos1_keB_pct) pos1_keB_pct.innerText = '100.0%';
-      if (pos1_keB_j) pos1_keB_j.innerText = `${totalE.toFixed(2)} J`;
-
-      // --- Position 2 (C - D) ---
-      const pos2_peC_pct = document.getElementById('pos2_peC_pct');
-      const pos2_peC_j = document.getElementById('pos2_peC_j');
-      const pos2_keC_pct = document.getElementById('pos2_keC_pct');
-      const pos2_keC_j = document.getElementById('pos2_keC_j');
-      const pos2_peD_pct = document.getElementById('pos2_peD_pct');
-      const pos2_peD_j = document.getElementById('pos2_peD_j');
-      const pos2_keD_pct = document.getElementById('pos2_keD_pct');
-      const pos2_keD_j = document.getElementById('pos2_keD_j');
-
-      if (pos2_peC_pct) pos2_peC_pct.innerText = `${cPePct}%`;
-      if (pos2_peC_j) pos2_peC_j.innerText = `${peCJoules.toFixed(2)} J`;
-      if (pos2_keC_pct) pos2_keC_pct.innerText = `${cKePct}%`;
-      if (pos2_keC_j) pos2_keC_j.innerText = `${keCJoules.toFixed(2)} J`;
-      if (pos2_peD_pct) pos2_peD_pct.innerText = '0.0%';
-      if (pos2_peD_j) pos2_peD_j.innerText = '0.00 J';
-      if (pos2_keD_pct) pos2_keD_pct.innerText = '100.0%';
-      if (pos2_keD_j) pos2_keD_j.innerText = `${totalE.toFixed(2)} J`;
-
-      // --- Position 3 (E - F) ---
-      const pos3_peE_pct = document.getElementById('pos3_peE_pct');
-      const pos3_peE_j = document.getElementById('pos3_peE_j');
-      const pos3_keE_pct = document.getElementById('pos3_keE_pct');
-      const pos3_keE_j = document.getElementById('pos3_keE_j');
-      const pos3_peF_pct = document.getElementById('pos3_peF_pct');
-      const pos3_peF_j = document.getElementById('pos3_peF_j');
-      const pos3_keF_pct = document.getElementById('pos3_keF_pct');
-      const pos3_keF_j = document.getElementById('pos3_keF_j');
-
-      if (pos3_peE_pct) pos3_peE_pct.innerText = `${ePePct}%`;
-      if (pos3_peE_j) pos3_peE_j.innerText = `${peEJoules.toFixed(2)} J`;
-      if (pos3_keE_pct) pos3_keE_pct.innerText = `${eKePct}%`;
-      if (pos3_keE_j) pos3_keE_j.innerText = `${keEJoules.toFixed(2)} J`;
-      if (pos3_peF_pct) pos3_peF_pct.innerText = '0.0%';
-      if (pos3_peF_j) pos3_peF_j.innerText = '0.00 J';
-      if (pos3_keF_pct) pos3_keF_pct.innerText = '100.0%';
-      if (pos3_keF_j) pos3_keF_j.innerText = `${totalE.toFixed(2)} J`;
-
-      // Update total energy across all cards
       document.querySelectorAll('.rowTotalVal').forEach(el => {
         el.innerText = `${totalE.toFixed(2)} J`;
       });
 
-      // Update Step Derivations 1, 2, 3 (Position-based)
+      const p2Pe = document.getElementById('pos2_peC');
+      const p2Ke = document.getElementById('pos2_keC');
+      const p3Pe = document.getElementById('pos3_peE');
+      const p3Ke = document.getElementById('pos3_keE');
+
+      if (p2Pe) p2Pe.innerText = `${cPePct}% (${peCJoules.toFixed(2)} J)`;
+      if (p2Ke) p2Ke.innerText = `${cKePct}% (${keCJoules.toFixed(2)} J)`;
+      if (p3Pe) p3Pe.innerText = `${ePePct}% (${peEJoules.toFixed(2)} J)`;
+      if (p3Ke) p3Ke.innerText = `${eKePct}% (${keEJoules.toFixed(2)} J)`;
+
       const s1 = document.getElementById('step1Calc');
       const s2 = document.getElementById('step2Calc');
       const s3 = document.getElementById('step3Calc');
 
       if (s1) {
-        s1.innerHTML = `Summit A: E<sub>p</sub> = ${m.toFixed(1)}kg &times; ${g}m/s² &times; ${h1.toFixed(1)}m = <strong class="text-rose-700">${totalE.toFixed(2)} J (100%)</strong>, E<sub>k</sub> = 0 J &bull; Valley B: E<sub>p</sub> = 0 J, E<sub>k</sub> = <strong class="text-emerald-700">${totalE.toFixed(2)} J (100%)</strong> &rarr; <span class="text-slate-900 font-bold">Total Energy = 100% Constant</span>`;
+        s1.innerHTML = `E<sub>p(A)</sub> = ${m.toFixed(1)} kg &times; ${g} m/s² &times; ${h1.toFixed(1)} m = <span class="text-rose-700 font-bold">${totalE.toFixed(2)} J</span> &bull; E<sub>k(A)</sub> = 0 J &rarr; <span class="text-slate-900 font-bold">Total Energy = 100% (${totalE.toFixed(2)} J)</span>`;
       }
       if (s2) {
-        s2.innerHTML = `Crest C: E<sub>p</sub> = ${m.toFixed(1)}kg &times; ${g}m/s² &times; ${h2.toFixed(1)}m = <strong class="text-purple-700">${peCJoules.toFixed(2)} J (${cPePct}%)</strong>, E<sub>k</sub> = <strong class="text-emerald-700">${keCJoules.toFixed(2)} J (${cKePct}%)</strong> &bull; Valley D: E<sub>p</sub> = 0 J, E<sub>k</sub> = <strong class="text-emerald-700">${totalE.toFixed(2)} J (100%)</strong> &rarr; <span class="text-slate-900 font-bold">Total Energy = 100% Constant</span>`;
+        s2.innerHTML = `E<sub>p(C)</sub> = ${m.toFixed(1)} kg &times; ${g} &times; ${h2.toFixed(1)} m = <span class="text-purple-700 font-bold">${peCJoules.toFixed(2)} J (${cPePct}%)</span> &rarr; E<sub>k(C)</sub> = <span class="text-emerald-700 font-bold">${keCJoules.toFixed(2)} J (${cKePct}%)</span> &rarr; <span class="text-slate-900 font-bold">Total = 100%</span>`;
       }
       if (s3) {
-        s3.innerHTML = `Crest E: E<sub>p</sub> = ${m.toFixed(1)}kg &times; ${g}m/s² &times; ${h3.toFixed(1)}m = <strong class="text-amber-700">${peEJoules.toFixed(2)} J (${ePePct}%)</strong>, E<sub>k</sub> = <strong class="text-emerald-700">${keEJoules.toFixed(2)} J (${eKePct}%)</strong> &bull; Bottom F: E<sub>p</sub> = 0 J, E<sub>k</sub> = <strong class="text-emerald-700">${totalE.toFixed(2)} J (100%)</strong> &rarr; <span class="text-slate-900 font-bold">Total Energy = 100% Constant</span>`;
+        s3.innerHTML = `E<sub>p(E)</sub> = ${m.toFixed(1)} kg &times; ${g} &times; ${h3.toFixed(1)} m = <span class="text-amber-700 font-bold">${peEJoules.toFixed(2)} J (${ePePct}%)</span> &rarr; E<sub>k(E)</sub> = <span class="text-emerald-700 font-bold">${keEJoules.toFixed(2)} J (${eKePct}%)</span> &rarr; <span class="text-slate-900 font-bold">Total = 100%</span>`;
       }
 
       updateHUD();
       drawCanvas();
     }
 
+    // Excel-style Potential Energy Matrix Calculation
+    function onPeSolveTargetChange() {
+      const target = document.getElementById('peSolveFor').value;
+      const inEp = document.getElementById('inPe_ep');
+      const inM = document.getElementById('inPe_m');
+      const inH = document.getElementById('inPe_h');
+
+      [inEp, inM, inH].forEach(el => {
+        if (!el) return;
+        el.disabled = false;
+        el.className = 'w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-orange-500 outline-none';
+      });
+
+      if (target === 'ep') {
+        inEp.disabled = true;
+        inEp.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      } else if (target === 'h') {
+        inH.disabled = true;
+        inH.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      } else if (target === 'm') {
+        inM.disabled = true;
+        inM.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      }
+
+      calcPeMatrix();
+    }
+
+    function calcPeMatrix() {
+      const inEpEl = document.getElementById('inPe_ep');
+      const inMEl = document.getElementById('inPe_m');
+      const inHEl = document.getElementById('inPe_h');
+      const targetEl = document.getElementById('peSolveFor');
+
+      if (!inEpEl || !inMEl || !inHEl || !targetEl) return;
+
+      const target = targetEl.value;
+      const g = 9.81;
+
+      let ep = parseFloat(inEpEl.value) || 0;
+      let m = parseFloat(inMEl.value) || 0;
+      let h = parseFloat(inHEl.value) || 0;
+
+      const outEp = document.getElementById('outPe_ep');
+      const outM = document.getElementById('outPe_m');
+      const outH = document.getElementById('outPe_h');
+      const banner = document.getElementById('solvedForPeText');
+
+      if (target === 'ep') {
+        const res = (m * g * h).toFixed(2);
+        outEp.innerText = res;
+        outM.innerText = '-';
+        outH.innerText = '-';
+        banner.innerHTML = `POTENTIAL ENERGY ( E<sub>p</sub> = m &times; g &times; h = ${m.toFixed(2)} &times; ${g} &times; ${h.toFixed(2)} = <strong class="text-cyan-900">${res} J</strong> )`;
+      } else if (target === 'h') {
+        const res = (m * g > 0) ? (ep / (m * g)).toFixed(2) : '0.00';
+        outH.innerText = res;
+        outEp.innerText = '-';
+        outM.innerText = '-';
+        banner.innerHTML = `HEIGHT ( h = E<sub>p</sub> / (m &times; g) = ${ep.toFixed(2)} / (${m.toFixed(2)} &times; ${g}) = <strong class="text-cyan-900">${res} m</strong> )`;
+      } else if (target === 'm') {
+        const res = (g * h > 0) ? (ep / (g * h)).toFixed(2) : '0.00';
+        outM.innerText = res;
+        outEp.innerText = '-';
+        outH.innerText = '-';
+        banner.innerHTML = `MASS ( m = E<sub>p</sub> / (g &times; h) = ${ep.toFixed(2)} / (${g} &times; ${h.toFixed(2)}) = <strong class="text-cyan-900">${res} kg</strong> )`;
+      }
+    }
+
+    // Excel-style Kinetic Energy Matrix Calculation
+    function onKeSolveTargetChange() {
+      const target = document.getElementById('keSolveFor').value;
+      const inEk = document.getElementById('inKe_ek');
+      const inM = document.getElementById('inKe_m');
+      const inV = document.getElementById('inKe_v');
+
+      [inEk, inM, inV].forEach(el => {
+        if (!el) return;
+        el.disabled = false;
+        el.className = 'w-full text-center font-bold bg-amber-100/70 border border-amber-300 rounded px-1 py-1 focus:ring-2 focus:ring-emerald-500 outline-none';
+      });
+
+      if (target === 'ek') {
+        inEk.disabled = true;
+        inEk.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      } else if (target === 'v') {
+        inV.disabled = true;
+        inV.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      } else if (target === 'm') {
+        inM.disabled = true;
+        inM.className = 'w-full text-center font-bold bg-slate-100 text-slate-400 border border-slate-200 rounded px-1 py-1 cursor-not-allowed';
+      }
+
+      calcKeMatrix();
+    }
+
+    function calcKeMatrix() {
+      const inEkEl = document.getElementById('inKe_ek');
+      const inMEl = document.getElementById('inKe_m');
+      const inVEl = document.getElementById('inKe_v');
+      const targetEl = document.getElementById('keSolveFor');
+
+      if (!inEkEl || !inMEl || !inVEl || !targetEl) return;
+
+      const target = targetEl.value;
+      let ek = parseFloat(inEkEl.value) || 0;
+      let m = parseFloat(inMEl.value) || 0;
+      let v = parseFloat(inVEl.value) || 0;
+
+      const outEk = document.getElementById('outKe_ek');
+      const outM = document.getElementById('outKe_m');
+      const outV = document.getElementById('outKe_v');
+      const banner = document.getElementById('solvedForKeText');
+
+      if (target === 'ek') {
+        const res = (0.5 * m * v * v).toFixed(4);
+        outEk.innerText = res;
+        outM.innerText = '-';
+        outV.innerText = '-';
+        banner.innerHTML = `KINETIC ENERGY ( E<sub>k</sub> = &frac12; &times; m &times; v&sup2; = &frac12; &times; ${m} &times; ${v}&sup2; = <strong class="text-cyan-900">${res} J</strong> )`;
+      } else if (target === 'v') {
+        const res = (m > 0 && ek >= 0) ? Math.sqrt((2 * ek) / m).toFixed(2) : '0.00';
+        outV.innerText = res;
+        outEk.innerText = '-';
+        outM.innerText = '-';
+        banner.innerHTML = `VELOCITY ( v = &radic;(2 &times; E<sub>k</sub> / m) = &radic;(2 &times; ${ek} / ${m}) = <strong class="text-cyan-900">${res} m/s</strong> )`;
+      } else if (target === 'm') {
+        const res = (v > 0) ? ((2 * ek) / (v * v)).toFixed(4) : '0.0000';
+        outM.innerText = res;
+        outEk.innerText = '-';
+        outV.innerText = '-';
+        banner.innerHTML = `MASS ( m = 2 &times; E<sub>k</sub> / v&sup2; = 2 &times; ${ek} / ${v}&sup2; = <strong class="text-cyan-900">${res} kg</strong> )`;
+      }
+    }
+
     const canvas = document.getElementById('uCurveCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
 
     function resizeCanvas() {
-      if (!canvas) return;
+      if (!canvas || !ctx) return;
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       canvas.width = rect.width * dpr;
@@ -1652,6 +1603,7 @@
     }
 
     function updateHUD() {
+      if (!canvas) return;
       const dpr = window.devicePixelRatio || 1;
       const pt = getTrackPoint(state.t, canvas.width / dpr, canvas.height / dpr);
       
@@ -1691,6 +1643,8 @@
     }
 
     function setupCanvasDragging() {
+      if (!canvas) return;
+
       function getPointer(e) {
         const rect = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -1857,16 +1811,18 @@
       ctx.moveTo(ptE.x - 20, ptE.y); ctx.lineTo(ptE.x + 20, ptE.y);
       ctx.stroke();
 
+      const datumText = 'Reference Level (h = 0, Ep = 0)';
       drawBadge(w * 0.78, ptB.y + 18, 195, 22, 'rgba(255, 255, 255, 0.94)', '#cbd5e1');
       ctx.fillStyle = '#475569';
       ctx.font = 'bold 10px Inter';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('Reference Level (h = 0, Ep = 0)', w * 0.78, ptB.y + 18);
+      ctx.fillText(datumText, w * 0.78, ptB.y + 18);
       ctx.restore();
 
       // 2. Height Dimension Markers
       ctx.save();
+      // Arrow h1 for Summit A
       ctx.strokeStyle = '#f43f5e';
       ctx.fillStyle = '#f43f5e';
       ctx.lineWidth = 1.5;
@@ -1874,41 +1830,46 @@
       ctx.beginPath();
       ctx.moveTo(arrowX1, ptA.y); ctx.lineTo(arrowX1, ptB.y);
       ctx.stroke();
+      const textH1 = `h₁ = ${state.h1.toFixed(1)}m`;
       drawBadge(arrowX1 - 32, (ptA.y + ptB.y) / 2, 58, 20, '#fff1f2', '#fecdd3');
       ctx.font = 'bold 10px Inter';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(`h₁ = ${state.h1.toFixed(1)}m`, arrowX1 - 32, (ptA.y + ptB.y) / 2);
+      ctx.fillText(textH1, arrowX1 - 32, (ptA.y + ptB.y) / 2);
 
+      // Arrow h2 for Mid crest C
       ctx.strokeStyle = '#8b5cf6';
       ctx.fillStyle = '#8b5cf6';
       const arrowX2 = ptC.x + 24;
       ctx.beginPath();
       ctx.moveTo(arrowX2, ptC.y); ctx.lineTo(arrowX2, ptB.y);
       ctx.stroke();
+      const textH2 = `h₂ = ${state.h2.toFixed(1)}m`;
       drawBadge(arrowX2 + 30, (ptC.y + ptB.y) / 2, 58, 20, '#faf5ff', '#e9d5ff');
-      ctx.fillText(`h₂ = ${state.h2.toFixed(1)}m`, arrowX2 + 30, (ptC.y + ptB.y) / 2);
+      ctx.fillText(textH2, arrowX2 + 30, (ptC.y + ptB.y) / 2);
 
+      // Arrow h3 for Lower crest E
       ctx.strokeStyle = '#f59e0b';
       ctx.fillStyle = '#f59e0b';
       const arrowX3 = ptE.x + 24;
       ctx.beginPath();
       ctx.moveTo(arrowX3, ptE.y); ctx.lineTo(arrowX3, ptB.y);
       ctx.stroke();
+      const textH3 = `h₃ = ${state.h3.toFixed(1)}m`;
       drawBadge(arrowX3 + 30, (ptE.y + ptB.y) / 2, 58, 20, '#fffbeb', '#fde68a');
-      ctx.fillText(`h₃ = ${state.h3.toFixed(1)}m`, arrowX3 + 30, (ptE.y + ptB.y) / 2);
+      ctx.fillText(textH3, arrowX3 + 30, (ptE.y + ptB.y) / 2);
       ctx.restore();
 
-      // 3. Draw Continuous Undulating Track
+      // 3. Draw Continuous Undulating Track with Multi-color Gradient
       ctx.save();
       const samples = 300;
       const grad = ctx.createLinearGradient(ptA.x, 0, ptF.x, 0);
-      grad.addColorStop(0.0, '#f43f5e'); // Rose
-      grad.addColorStop(0.2, '#10b981'); // Emerald
-      grad.addColorStop(0.4, '#8b5cf6'); // Purple
-      grad.addColorStop(0.6, '#14b8a6'); // Teal
-      grad.addColorStop(0.8, '#f59e0b'); // Amber
-      grad.addColorStop(1.0, '#0284c7'); // Sky
+      grad.addColorStop(0.0, '#f43f5e');
+      grad.addColorStop(0.2, '#10b981');
+      grad.addColorStop(0.4, '#8b5cf6');
+      grad.addColorStop(0.6, '#14b8a6');
+      grad.addColorStop(0.8, '#f59e0b');
+      grad.addColorStop(1.0, '#0284c7');
 
       ctx.beginPath();
       for (let i = 0; i <= samples; i++) {
@@ -1920,13 +1881,17 @@
       ctx.lineWidth = 4.5;
       ctx.lineCap = 'round';
       ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(99, 102, 241, 0.12)';
+      ctx.lineWidth = 9;
+      ctx.stroke();
       ctx.restore();
 
-      // 4. Draw Callouts with Non-overlapping High-Contrast Cards
+      // 4. Draw Callouts
       const drawCallout = (x, y, label, peText, keText, isValley = false, color = '#2563eb') => {
         ctx.save();
-        const badgeY = isValley ? y - 44 : y - 40;
-        const bw = 64;
+        const badgeY = isValley ? y - 42 : y - 38;
+        const bw = 68;
         const bh = 46;
 
         drawBadge(x, badgeY, bw, bh, 'rgba(255, 255, 255, 0.98)', '#cbd5e1');
@@ -1962,7 +1927,7 @@
       drawCallout(ptE.x, ptE.y, 'E', `${ePePct}%`, `${eKePct}%`, false, '#f59e0b');
       drawCallout(ptF.x, ptF.y, 'F', '0%', '100%', true, '#0284c7');
 
-      // 5. Interactive Height Handles on Summits (A, C, E)
+      // 5. Interactive Height Handles
       const drawHeightHandle = (pt, color) => {
         ctx.save();
         ctx.beginPath();
@@ -1994,7 +1959,7 @@
       drawHeightHandle(ptC, '#8b5cf6');
       drawHeightHandle(ptE, '#f59e0b');
 
-      // 6. Draw Moving Physical Ball
+      // 6. Draw Moving Ball & Vector Arrow
       const ballPt = getTrackPoint(state.t, w, h);
       ctx.save();
       ctx.shadowColor = 'rgba(37, 99, 235, 0.45)';
@@ -2013,6 +1978,32 @@
       ctx.lineWidth = 2.5;
       ctx.stroke();
       ctx.restore();
+
+      const pAhead = getTrackPoint(Math.min(1.0, state.t + 0.015), w, h);
+      const angle = Math.atan2(pAhead.y - ballPt.y, pAhead.x - ballPt.x);
+      const ptNow = getTrackPoint(state.t, w, h);
+      const currentV = Math.sqrt(Math.max(0, 2 * state.g * (state.h1 - ptNow.normH * state.h1)));
+      const arrowLen = Math.min(34, Math.max(0, currentV * 2.2));
+
+      if (arrowLen > 2) {
+        ctx.save();
+        ctx.translate(ballPt.x, ballPt.y);
+        ctx.rotate(angle);
+        ctx.strokeStyle = '#10b981';
+        ctx.fillStyle = '#10b981';
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(arrowLen, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(arrowLen, -3);
+        ctx.lineTo(arrowLen + 4.5, 0);
+        ctx.lineTo(arrowLen, 3);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
     }
 
     let lastTime = null;
@@ -2053,8 +2044,8 @@
       setupCanvasDragging();
       syncControlsUI();
       runCalculator();
-      calcPeMatrix();
-      calcKeMatrix();
+      onPeSolveTargetChange();
+      onKeSolveTargetChange();
       requestAnimationFrame(animLoop);
     };
   </script>
