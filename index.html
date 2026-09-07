@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Principle of Conservation of Energy - Interactive Physics Laboratory</title>
+  <title>Principle of Conservation of Energy - Live Simulator</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -419,7 +419,7 @@
       <div class="studio-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-white via-slate-50 to-indigo-50/30">
         <div>
           <span class="text-[11px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-full shadow-xs">
-            Interactive Physics Laboratory
+            Interactive Simulator
           </span>
           <h2 class="text-base sm:text-lg font-black text-slate-900 mt-1.5 flex items-center gap-2">
             Undulating Track Simulation (Points A &rarr; F)
@@ -441,13 +441,13 @@
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span> B (Valley)
           </button>
           <button onclick="setBallPosition('C')" class="px-2.5 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 font-extrabold text-xs border border-purple-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-purple-500"></span> C (Mid crest)
+            <span class="w-2 h-2 rounded-full bg-purple-500"></span> C (Mid Crest)
           </button>
           <button onclick="setBallPosition('D')" class="px-2.5 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-extrabold text-xs border border-teal-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
             <span class="w-2 h-2 rounded-full bg-teal-500"></span> D (Valley)
           </button>
           <button onclick="setBallPosition('E')" class="px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-extrabold text-xs border border-amber-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-amber-500"></span> E (Low crest)
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span> E (Low Crest)
           </button>
           <button onclick="setBallPosition('F')" class="px-2.5 py-1.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 font-extrabold text-xs border border-sky-300 transition shadow-2xs active:scale-95 flex items-center gap-1">
             <span class="w-2 h-2 rounded-full bg-sky-500"></span> F (Bottom)
@@ -574,7 +574,7 @@
           
           <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
             <span class="text-[11px] font-extrabold text-slate-800 flex items-center gap-1.5">
-              <span>⚙️</span> Custom Height &amp; Mass Steppers (Live Physics Synchronization)
+              <span>⚙️</span> Custom Height &amp; Mass Steppers (Live Simulator)
             </span>
             <button onclick="resetDefaultParameters()" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition shadow-2xs">
               Reset Values ↺
@@ -615,10 +615,10 @@
               <input type="range" id="slider_h1" min="3.0" max="15.0" step="0.5" value="6.0" oninput="onParamChange('h1', this.value)" class="w-full h-1 bg-sky-200 rounded cursor-pointer accent-sky-600" />
             </div>
 
-            <!-- Mid crest C Height (h2) Stepper -->
+            <!-- Mid Crest C Height (h2) Stepper -->
             <div class="bg-white p-2 rounded-xl border border-purple-200 space-y-1 shadow-2xs">
               <div class="flex justify-between items-center text-[10px] font-bold text-purple-950">
-                <span>⛰️ crest C (h₂):</span>
+                <span>⛰️ Crest C (h₂):</span>
                 <span class="text-[9px] text-purple-500 font-mono">±0.2 m</span>
               </div>
               <div class="flex items-center justify-between gap-1 bg-purple-50/50 p-1 rounded-lg border border-purple-100">
@@ -631,10 +631,10 @@
               <input type="range" id="slider_h2" min="1.0" max="12.0" step="0.2" value="3.8" oninput="onParamChange('h2', this.value)" class="w-full h-1 bg-purple-200 rounded cursor-pointer accent-purple-600" />
             </div>
 
-            <!-- Lower crest E Height (h3) Stepper -->
+            <!-- Lower Crest E Height (h3) Stepper -->
             <div class="bg-white p-2 rounded-xl border border-amber-200 space-y-1 shadow-2xs">
               <div class="flex justify-between items-center text-[10px] font-bold text-amber-950">
-                <span>🏕️ crest E (h₃):</span>
+                <span>🏕️ Crest E (h₃):</span>
                 <span class="text-[9px] text-amber-500 font-mono">±0.2 m</span>
               </div>
               <div class="flex items-center justify-between gap-1 bg-amber-50/50 p-1 rounded-lg border border-amber-100">
@@ -656,14 +656,14 @@
       <!-- 3-PHASE ENERGY OVERVIEW CARDS -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         
-        <!-- Phase 1: crest Elevations (A, C, E) -->
+        <!-- Phase 1: Crest Elevations (A, C, E) -->
         <div class="rounded-2xl border-2 border-rose-200 bg-rose-50/50 p-4 space-y-1.5 shadow-xs hover:shadow-md transition">
           <div class="flex items-center gap-2">
             <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-black shadow-xs">
               1
             </span>
             <h4 class="font-extrabold text-rose-900 text-xs sm:text-sm">
-              crest Elevations (A, C, E)
+              Crest Elevations (A, C, E)
             </h4>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed pl-8">
@@ -715,7 +715,7 @@
         <div class="border-b border-slate-200 pb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
             <span class="text-xs font-black uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-3 py-1 rounded-full shadow-xs">
-              Step-by-Step Physics Solver
+              Step-by-Step Solver
             </span>
             <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">
               Conservation of Energy Calculations
@@ -806,7 +806,7 @@
                 <div class="bg-white p-2.5 rounded-xl border border-purple-200 space-y-1 shadow-2xs">
                   <span class="text-[10px] font-bold text-slate-500 uppercase block">Potential Energy (E<sub>p</sub> = mgh)</span>
                   <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-600">crest C (h₂):</span>
+                    <span class="text-slate-600">Crest C (h₂):</span>
                     <span id="pos2_peC" class="font-black text-blue-700">63.3% (74.56 J)</span>
                   </div>
                   <div class="flex justify-between items-center text-[11px]">
@@ -819,7 +819,7 @@
                 <div class="bg-white p-2.5 rounded-xl border border-emerald-200 space-y-1 shadow-2xs">
                   <span class="text-[10px] font-bold text-slate-500 uppercase block">Kinetic Energy (E<sub>k</sub>)</span>
                   <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-600">crest C:</span>
+                    <span class="text-slate-600">Crest C:</span>
                     <span id="pos2_keC" class="font-black text-emerald-700">36.7% (43.16 J)</span>
                   </div>
                   <div class="flex justify-between items-center text-[11px]">
@@ -852,7 +852,7 @@
                 <div class="bg-white p-2.5 rounded-xl border border-amber-200 space-y-1 shadow-2xs">
                   <span class="text-[10px] font-bold text-slate-500 uppercase block">Potential Energy (E<sub>p</sub> = mgh)</span>
                   <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-600">crest E (h₃):</span>
+                    <span class="text-slate-600">Crest E (h₃):</span>
                     <span id="pos3_peE" class="font-black text-blue-700">30.0% (35.32 J)</span>
                   </div>
                   <div class="flex justify-between items-center text-[11px]">
@@ -865,7 +865,7 @@
                 <div class="bg-white p-2.5 rounded-xl border border-emerald-200 space-y-1 shadow-2xs">
                   <span class="text-[10px] font-bold text-slate-500 uppercase block">Kinetic Energy (E<sub>k</sub>)</span>
                   <div class="flex justify-between items-center text-[11px]">
-                    <span class="text-slate-600">crest E:</span>
+                    <span class="text-slate-600">Crest E:</span>
                     <span id="pos3_keE" class="font-black text-emerald-700">70.0% (82.40 J)</span>
                   </div>
                   <div class="flex justify-between items-center text-[11px]">
@@ -930,10 +930,10 @@
               </div>
             </div>
 
-            <!-- crest C Height -->
+            <!-- Crest C Height -->
             <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
-                <label class="text-purple-900">crest C (h₂):</label>
+                <label class="text-purple-900">Crest C (h₂):</label>
                 <span id="dispCalcH2" class="font-mono text-purple-700">3.8 m</span>
               </div>
               <div class="flex items-center gap-1.5">
@@ -946,10 +946,10 @@
               </div>
             </div>
 
-            <!-- crest E Height -->
+            <!-- Crest E Height -->
             <div class="space-y-1">
               <div class="flex justify-between text-xs font-bold">
-                <label class="text-amber-900">crest E (h₃):</label>
+                <label class="text-amber-900">Crest E (h₃):</label>
                 <span id="dispCalcH3" class="font-mono text-amber-700">1.8 m</span>
               </div>
               <div class="flex items-center gap-1.5">
@@ -1003,7 +1003,7 @@
               <span class="text-[10px] font-mono bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-200 font-bold">h₂ = <span class="calcValH2">3.8</span>m</span>
             </div>
             <p class="text-xs text-slate-600">
-              At crest C, mechanical energy is partitioned between E<sub>p</sub> and E<sub>k</sub>:
+              At Crest C, mechanical energy is partitioned between E<sub>p</sub> and E<sub>k</sub>:
             </p>
             <div id="step2Calc" class="bg-purple-50/70 p-3 rounded-xl border border-purple-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
               E<sub>p(C)</sub> = m &times; g &times; h₂ &rarr; E<sub>p(C)</sub> (63.3%) + E<sub>k(C)</sub> (36.7%) = 100% (117.72 J)
@@ -1015,12 +1015,12 @@
             <div class="flex items-center justify-between">
               <span class="text-xs font-extrabold text-amber-900 flex items-center gap-2">
                 <span class="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-mono font-black">3</span>
-                Position 3 (E – F): Low crest Balance &amp; Final Ground Level
+                Position 3 (E – F): Low Crest Balance &amp; Final Ground Level
               </span>
               <span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200 font-bold">h₃ = <span class="calcValH3">1.8</span>m</span>
             </div>
             <p class="text-xs text-slate-600">
-              Over crest E, high kinetic energy is retained before dropping to Bottom F (100% E<sub>k</sub>):
+              Over Crest E, high kinetic energy is retained before dropping to Bottom F (100% E<sub>k</sub>):
             </p>
             <div id="step3Calc" class="bg-amber-50/70 p-3 rounded-xl border border-amber-200 font-mono text-xs text-slate-900 leading-relaxed font-bold">
               E<sub>p(E)</sub> = m &times; g &times; h₃ &rarr; E<sub>p(E)</sub> (30.0%) + E<sub>k(E)</sub> (70.0%) = 100% (117.72 J)
@@ -1039,7 +1039,7 @@
   <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500 mt-auto select-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
       <p class="font-medium text-slate-700">Principle of Conservation of Energy &bull; E<sub>p</sub> + E<sub>k</sub> = Total Energy (100% Constant)</p>
-      <p class="text-slate-400 font-mono text-[11px]">Protected Interactive Physics Simulator &bull; All Rights Reserved</p>
+      <p class="text-slate-400 font-mono text-[11px]">Protected Interactive Simulator &bull; All Rights Reserved</p>
     </div>
   </footer>
 
@@ -1837,7 +1837,7 @@
       ctx.textBaseline = 'middle';
       ctx.fillText(textH1, arrowX1 - 32, (ptA.y + ptB.y) / 2);
 
-      // Arrow h2 for Mid crest C
+      // Arrow h2 for Mid Crest C
       ctx.strokeStyle = '#8b5cf6';
       ctx.fillStyle = '#8b5cf6';
       const arrowX2 = ptC.x + 24;
@@ -1848,7 +1848,7 @@
       drawBadge(arrowX2 + 30, (ptC.y + ptB.y) / 2, 58, 20, '#faf5ff', '#e9d5ff');
       ctx.fillText(textH2, arrowX2 + 30, (ptC.y + ptB.y) / 2);
 
-      // Arrow h3 for Lower crest E
+      // Arrow h3 for Lower Crest E
       ctx.strokeStyle = '#f59e0b';
       ctx.fillStyle = '#f59e0b';
       const arrowX3 = ptE.x + 24;
