@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Principle of Conservation of Energy - Live Simulator</title>
+  <title>Principle of Conservation of Energy - Interactive Physics Laboratory</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -419,7 +419,7 @@
       <div class="studio-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-white via-slate-50 to-indigo-50/30">
         <div>
           <span class="text-[11px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-full shadow-xs">
-            Interactive Simulator
+            Interactive Physics Laboratory
           </span>
           <h2 class="text-base sm:text-lg font-black text-slate-900 mt-1.5 flex items-center gap-2">
             Undulating Track Simulation (Points A &rarr; F)
@@ -574,7 +574,7 @@
           
           <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
             <span class="text-[11px] font-extrabold text-slate-800 flex items-center gap-1.5">
-              <span>⚙️</span> Custom Height &amp; Mass Steppers (Live Simulator)
+              <span>⚙️</span> Custom Height &amp; Mass Steppers (Live Physics Synchronization)
             </span>
             <button onclick="resetDefaultParameters()" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition shadow-2xs">
               Reset Values ↺
@@ -656,18 +656,18 @@
       <!-- 3-PHASE ENERGY OVERVIEW CARDS -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
         
-        <!-- Phase 1: Crest Elevations (A, C, E) -->
+        <!-- Phase 1: Peak Elevations (A, C, E) -->
         <div class="rounded-2xl border-2 border-rose-200 bg-rose-50/50 p-4 space-y-1.5 shadow-xs hover:shadow-md transition">
           <div class="flex items-center gap-2">
             <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-black shadow-xs">
               1
             </span>
             <h4 class="font-extrabold text-rose-900 text-xs sm:text-sm">
-              Crest Elevations (A, C, E)
+              Peak Elevations (A, C, E)
             </h4>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed pl-8">
-            As the ball moves higher, its potential energy increases and its kinetic energy decreases.
+            Higher potential energy due to elevated position. Kinetic energy drops as the ball climbs the undulating track.
           </p>
         </div>
 
@@ -697,7 +697,7 @@
             </h4>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed pl-8">
-            Energy changes between potential and kinetic energy, but no energy is lost: Ep + Ek = 100%.
+            Energy seamlessly flows between potential and kinetic forms back and forth without any total mechanical loss.
           </p>
         </div>
 
@@ -715,7 +715,7 @@
         <div class="border-b border-slate-200 pb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
             <span class="text-xs font-black uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-3 py-1 rounded-full shadow-xs">
-              Step-by-Step Solver
+              Step-by-Step Physics Solver
             </span>
             <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">
               Conservation of Energy Calculations
@@ -1035,11 +1035,15 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500 mt-auto select-none">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p class="font-medium text-slate-700">Principle of Conservation of Energy &bull; E<sub>p</sub> + E<sub>k</sub> = Total Energy (100% Constant)</p>
-      <p class="text-slate-400 font-mono text-[11px]">Protected Interactive Simulator &bull; All Rights Reserved</p>
+  <!-- Footer matching the reference portal styling -->
+  <footer class="border-t border-slate-800/80 bg-[#080d1a] py-4 sm:py-5 text-center text-xs text-slate-400 mt-auto select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-1">
+      <p class="font-normal text-slate-300 text-xs sm:text-[13px] tracking-wide">
+        &copy; 2026 Mohd Saiful bin Pahrudin | Unit Sains JMSK, Politeknik Port Dickson
+      </p>
+      <p class="text-[11px] text-slate-500 font-medium tracking-wider">
+        All Rights Reserved &bull; For Educational Use Only
+      </p>
     </div>
   </footer>
 
